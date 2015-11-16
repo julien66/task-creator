@@ -1,0 +1,31 @@
+<% if (turnpoint.type == 'takeoff') { %>
+  <li class="turnpoint tp-takeoff" index="<%- turnpoint.index %>">
+    <span class="baseInfo">
+      <%- turnpoint.id + " " + turnpoint.name %>
+    </span>
+    <span class="tp-<%- turnpoint.mode %>"><%- turnpoint.mode %></span>
+    <span class="tp-radius"><%- turnpoint.radius %></span>
+  </li>
+<% } %>
+
+<% if (turnpoint.type == 'end-of-speed-section') { %>
+  <li class="turnpoint tp-end-of-speed-section" index="<%- turnpoint.index %>">
+    <span class="baseInfo">
+      <%- turnpoint.id + " " + turnpoint.name %>
+    </span>
+    <span class="tp-<%- turnpoint.mode %>"><%- turnpoint.mode %></span>
+    <span class="tp-radius"><%- turnpoint.radius %></span>
+  </li>
+<% } %>
+
+<% if (turnpoint.type == 'goal') { %>
+  <li class="turnpoint tp-goal" index="<%- turnpoint.index %>">
+    <span class="baseInfo">
+      <%- turnpoint.id + " " + turnpoint.name %>
+    </span>
+    <span class="tp-<%- turnpoint.goalType %>"><%- turnpoint.goalType %></span>
+    <% if (turnpoint.goalType != 'line') { %>
+      <span class="tp-radius"><%- turnpoint.radius %></span>
+    <% } %>
+  </li>
+<% } %>

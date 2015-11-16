@@ -1,0 +1,44 @@
+<div id="dummydiv" title="do-not-remove">
+  <div id="turnpoint-config">
+    <div id="turnpoint-header">
+      Turnpoint configuration : <%- info.name %>
+    </div>
+    <div id="turnpoint-content">
+      <form action="#" autocomplete="off" id="turnpoint-form-config">
+        <ul>
+          <li id="tp-type" class="tp-<%- info.type %>">Type
+            <select autocomplete="off" id="tp-type-select" name="type">
+              <%- typeOptions %>
+            </select>
+          </li>
+          <li id="tp-goal-type" class="tp-<%- info.goalType %>"> Goal type :
+            <select autocomplete="off" id="tp-goal-type-select" name="goal-type">
+              <%- goalOptions %>
+            </select>
+          </li>
+          <li id="tp-radius">Radius :
+            <input id="tp-radius-input" type="text" name="radius" value="<%- info.radius %>"/> m
+          </li>
+          <li id="tp-mode" class="tp-<%- info.mode %>">Mode :
+            <select id="tp-mode-select" autocomplete="off" name="mode">
+              <%- modeOptions %>
+            </select>
+          </li>
+          <li id="tp-open">Opening Time :
+            <input id="tp-open-input" type="text" name="opening_time" value="<%- info.open %>"/>
+          </li>
+          <li id="tp-close">Closing time :
+            <input id="tp-close-input" type="text"  name="close_time" value="<%- info.close %>"/>
+          </li>
+          <input id="tp-index" type="hidden" name="country" value="<%- info.index %>">
+        </ul>
+        <% if (mode == 'create') { %>
+          <div id="add-turnpoint" class="add-task-turnpoint form-button"> Add Turnpoint !</div>
+        <% } else { %>
+          <div id="edit-turnpoint" class="edit-task-turnpoint form-button"> Edit Turnpoint !</div>
+          <div id="delete-turnpoint" class="delete-task-turnpoint form-button"> Delete Turnpoint !</div>
+        <% } %>
+      </form>
+    </div>
+  </div>
+</div>

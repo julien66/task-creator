@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="Task Planner">
+  <rte>
+    <date><%- taskInfo.date %></date>
+    <type><%- taskInfo.type %></type>
+    <num><%- taskInfo.num %></num>
+    <% for (var i = 0; i < turnpoints.length; i++) { %>
+      <rtept lon="<%- turnpoints[i].x %>" lat="<%- turnpoints[i].y %>">
+        <close><%- turnpoints[i].close %></close>
+        <filename><%- turnpoints[i].filename %></filename>
+        <goalType><%- turnpoints[i].goalType %></goalType>
+        <id><%- turnpoints[i].id %></id>
+        <index><%- turnpoints[i].index %></index>
+        <mode><%- turnpoints[i].mode %></mode>
+        <name><%- turnpoints[i].name %></name>
+        <open><%- turnpoints[i].open %></open>
+        <radius><%- turnpoints[i].radius %></radius>
+        <type><%- turnpoints[i].type %></type>
+        <z><%- turnpoints[i].z %></z>
+      </rtept>
+    <% } %>
+  </rte>
+</gpx>

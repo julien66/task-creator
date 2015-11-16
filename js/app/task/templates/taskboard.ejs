@@ -1,0 +1,8 @@
+<div>
+  <ul>
+    <% for(var i = 0;  i < turnpoints.length; i++) { %>
+      <li class="tp-<%- turnpoints[i].type %>"> <%- turnpoints[i].name %> </li>
+    <% } %>
+  </ul>
+  <div id="task-distance"> <%- Math.round(taskInfo.distance) / 1000 %> Km </div>
+</div>

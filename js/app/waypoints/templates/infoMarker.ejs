@@ -1,0 +1,13 @@
+<div class="turnpoints-popup">
+  <h1 class="turnpoints-name"><%- info.name %></h1>
+  <div id="turnpoints-content">
+    <div class="id"> Id : <%- info.id %></div>
+    <div class="altitude"> Altitude : <%- altitude %> m</div>
+    <div class="lat"> Latitude : ' <%- info.x %></div>
+    <div class="lon"> Longitude : <%- info.y %></div>
+    <div class="filename"> Source file : <%- info.filename %> </div>
+    <div id="configure-turnpoint" filename="<%- info.filename %>" tid="<%- info.id %>"  class="add-task-turnpoint form-button">
+      Add To Task
+    </div>
+  </div>
+</div>
