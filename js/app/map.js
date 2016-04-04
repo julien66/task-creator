@@ -86,7 +86,7 @@ function(param, geolocation, google, task, keyboard) {
     for (var i = 0; i < turnpointElements.length; i++) {
       turnpointElements[i].setMap(null);
     }
-
+    
     task.drawCourse(google, map);
     
     turnpointElements = [];
@@ -148,7 +148,7 @@ function(param, geolocation, google, task, keyboard) {
   document.addEventListener('geolocation', onGeolocation);
   document.addEventListener('taskChange', onTaskChange);
   document.addEventListener('openMapTurnpointConfig', onOpenMapTurnpointConfig);
-  geolocation.check();
+  //geolocation.check();
   
   return map;
 });

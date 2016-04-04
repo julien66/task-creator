@@ -101,7 +101,7 @@ select {
 /**
  * Marker Window.
  */
-.turnpoints-popup, #turnpoint-config {
+/*.turnpoints-popup, #turnpoint-config {
  -webkit-touch-callout: none;
  -webkit-user-select: none;
  -khtml-user-select: none;
@@ -113,7 +113,7 @@ select {
 #turnpoint-config input:focus,
 #turnpoint-config select:focus {
   outline: none;
-}
+}*/
 
 .form-button {
   padding : 10px;

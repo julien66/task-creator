@@ -6,14 +6,14 @@ define([], function() {
   var downKeys = {};
   
   var onKeyDown = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    /*e.preventDefault();
+    e.stopPropagation();*/
     downKeys[e.keyCode] = true;
   }
   
   var onKeyUp = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    /*e.preventDefault();
+    e.stopPropagation();*/
     delete downKeys[e.keyCode];
   }
   

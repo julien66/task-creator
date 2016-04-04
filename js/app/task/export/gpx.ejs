@@ -5,9 +5,10 @@
     <type><%- taskInfo.type %></type>
     <num><%- taskInfo.num %></num>
     <% for (var i = 0; i < turnpoints.length; i++) { %>
-      <rtept lon="<%- turnpoints[i].x %>" lat="<%- turnpoints[i].y %>">
+      <rtept lon="<%- turnpoints[i].y %>" lat="<%- turnpoints[i].x %>">
         <close><%- turnpoints[i].close %></close>
-        <filename><%- turnpoints[i].filename %></filename>
+        <!-- <filename>task_<%- taskInfo.date %>.tsk</filename> -->
+        <fileOrigin><%- turnpoints[i].filename %></fileOrigin>
         <goalType><%- turnpoints[i].goalType %></goalType>
         <id><%- turnpoints[i].id %></id>
         <index><%- turnpoints[i].index %></index>

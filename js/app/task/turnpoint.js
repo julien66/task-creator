@@ -21,7 +21,6 @@ define(['app/param', 'waypoints/waypoint'], function(param, Waypoint) {
         this[element] = turnpointInfo[element];
       } 
     }
-    console.log(this);
 
     this.renderTurnpoint = function(google, map, turnpoints) {
       if (this.type != 'goal' || this.goalType != 'line') {
@@ -37,7 +36,6 @@ define(['app/param', 'waypoints/waypoint'], function(param, Waypoint) {
           marker: this.marker,
           turnpoint: this,
         };
-        console.log(this);
         this.mapElement = new google.maps.Circle(circleOptions);
       }
       else {
@@ -91,4 +89,3 @@ define(['app/param', 'waypoints/waypoint'], function(param, Waypoint) {
 
   return Turnpoint;
 });
-

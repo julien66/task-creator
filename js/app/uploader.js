@@ -30,7 +30,6 @@ define(['Dropzone', 'app/wpParser'], function(Dropzone, wpParser) {
       document.dispatchEvent(e); 
     }
 
-      console.log(parseInfo.task);
     if (parseInfo.task) {
       var e = document.createEvent("CustomEvent");
       e.initCustomEvent('newTask', false, false, {

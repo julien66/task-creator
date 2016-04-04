@@ -17,8 +17,6 @@ define(["app/param"], function(param) {
       // For all turnpoint excpet the last one.
       if (i < turnpoints.length - 1) {
         // Getting the hearing.
-        console.log(turnpoints[i]);
-        console.log(google.maps.geometry);
         var heading = google.maps.geometry.spherical.computeHeading(turnpoints[i].latLng, turnpoints[i + 1].latLng);
         // Unsure heading is always positive.
         if (heading < 0) heading += 360;

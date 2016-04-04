@@ -31,11 +31,11 @@ define([], function() {
       };
 
       var wp = {  
-        filename : rtetp[i].getElementsByTagName('filename')[0].childNodes[0].nodeValue,
+        filename : filename, //rtetp[i].getElementsByTagName('filename')[0].childNodes[0].nodeValue,
         id : rtetp[i].getElementsByTagName('id')[0].childNodes[0].nodeValue,
         name : rtetp[i].getElementsByTagName('name')[0].childNodes[0].nodeValue,
-        x : rtetp[i].getAttribute('lon'),
-        y : rtetp[i].getAttribute('lat'),
+        x : rtetp[i].getAttribute('lat'),
+        y : rtetp[i].getAttribute('lon'),
         z : rtetp[i].getElementsByTagName('z')[0].childNodes[0].nodeValue,
       }
       wps.push(wp);

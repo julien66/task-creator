@@ -72,7 +72,6 @@ function($, helper, param, modalWindows, turnpointTemplate) {
     var typeOptions = helper.formatOptions(param.turnpoint.allowed.type, info.type);
     var goalOptions = helper.formatOptions(param.turnpoint.allowed.goalType, info.goalType);
     var modeOptions = helper.formatOptions(param.turnpoint.allowed.mode, info.mode);
-    
     var content = turnpointTemplate({
       info : info,
       typeOptions : typeOptions,

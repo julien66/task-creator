@@ -121,7 +121,6 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
   var onNewTask = function(e) {
     var waypoints = e.detail.waypoints;
     var tps = e.detail.task;
-    console.log(tps);
     if (waypoints) {
       for (var i = 0; i < waypoints.length; i++) {
         addTurnpoint(waypoints[i], tps[i]);
@@ -129,6 +128,7 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
     }
   }
 
+  //document.addEventListener('filenameRemoved', onTaskDelete);
   document.addEventListener('addTurnpoint', onAddTurnpoint);
   document.addEventListener('editTurnpoint', onEditTurnpoint);
   document.addEventListener('removeTurnpoint', onRemoveTurnpoint);
