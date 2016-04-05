@@ -2,7 +2,7 @@
  * @file
  * File Uplader module for the task creator. 
  */
-define(['Dropzone', 'app/wpParser'], function(Dropzone, wpParser) {
+define(['Dropzone', 'app/wpParser', 'jquery'], function(Dropzone, wpParser, $) {
   Dropzone.autoDiscover = false;
   
   var reader = new FileReader();
@@ -46,10 +46,12 @@ define(['Dropzone', 'app/wpParser'], function(Dropzone, wpParser) {
     parse(text);
   }
   
+  $("#uploader").addClass('dropzone');
+
   var myDz = new Dropzone("#uploader", {
     maxFiles : 1,
     acceptedFiles : '.txt, .TXT, .wpt, .WPT, .igc, .IGC, .cup, .CUP, .tsk, .TSK',
-    dictDefaultMessage : "Drop a waypoint file (or click) here",
+    dictDefaultMessage : "Drop files (or click) here",
   });
   
   myDz.on("addedfile", function(file) {

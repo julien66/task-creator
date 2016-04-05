@@ -7,24 +7,16 @@
  * Main Layout.
  */
 html, body {
-  width: 100%;
   height: 100%;
-  margin : 0;
-  padding : 0;
   font-family : Roboto, Arial, sans-serif;
 }
 
-#map-canvas {
- width: 85%;
- height: 100%;
- float: left;
+
+.container-fluid, .row, #map-canvas, #sidebar {
+  height : 100%;
 }
 
 #sidebar {
- width: 15%;
- height: 100%;
- display: block;
- float: right;
  background-color: #111;
  color : #EEE;
 }
@@ -88,8 +80,6 @@ select {
 
 #filenameList {
  list-style: none;
- background: url('../images/trash.png') left center no-repeat;
- font-size: 0.6em;
  padding : 5px 0px 5px 20px;
  cursor: pointer;
 }
@@ -115,46 +105,10 @@ select {
   outline: none;
 }*/
 
-.form-button {
-  padding : 10px;
-  margin-top: 5px;
-  text-align : center;
-  color : #EEE;
-  cursor: pointer;
-  font-size: 1.2em;
-  font-weight: bold;
-  border-radius: 5px;
-  clear: both;
+gm-panel li {
+  border: none;
 }
 
-.add-task-turnpoint, .export-full-task {
-  background : repeating-linear-gradient(45deg, #088A08, #088A08 20px, #04B404 20px, #04B404 40px);
-}
-
-.edit-task-turnpoint, .edit-full-task {
-  background : repeating-linear-gradient(45deg, #DF7401, #DF7401 20px, #FF8000 20px, #FF8000 40px);
-}
-
-.delete-task-turnpoint, .delete-full-task {
-  background : repeating-linear-gradient(45deg, #DF0101, #DF0101 20px, #FF0000 20px, #FF0000 40px);
-}
-
-.form-button:hover {
-  text-decoration: underline;
-}
-
-/**
- * Overlay.
- */
-#overlay {
-  position: absolute;
-  width:100%;
-  height:100%;
-  background-color: #111;
-  opacity:0.8;
-  z-index: 10000000;
-  display: none;
-}
 
 /**
  * Tunrpoint configuration window.
@@ -174,18 +128,6 @@ select {
   list-style-position : inside;
   border : 1px solid #aaa;
   box-sizing: border-box;
-}
-
-#modal-close {
-  height : 16px;
-  width : 16px;
-  float : right;
-  background : url('../images/close.png') center center no-repeat;
-  cursor : pointer;
-}
-
-#turnpoint-config {
-  text-transform: capitalize;
 }
 
 .tp-takeoff {
@@ -259,10 +201,6 @@ select {
   font-family: cursive;
   font-size: 1.1em;
   text-align: center;
-}
-
-#taskboard-content {
-  font-size: 0.6em;
 }
 
 #taskboard-content li {

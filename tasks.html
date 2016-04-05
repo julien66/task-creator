@@ -3,6 +3,8 @@
   <head>
     <title>Task creator</title>
     <script data-main="js/app" src="js/lib/requirejs/require.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="js/lib/jGrowl/jquery.jgrowl.css">
     <link rel="stylesheet" type="text/css" href="js/lib/jquery-ui-1.11.0.custom/jquery-ui.css">
@@ -11,23 +13,27 @@
   <body>
     <div id="overlay"></div>
     <div id="modal-container"></div>
-    <div id="map-canvas"></div>
-    <div id="sidebar">
-      <div id="sidebar-inner">
-        <form action="#" class="dropzone" id="uploader"></form>
-        <div id="file-handler">
-          <ul>
-          </ul>
-        </div>
-        <div id ="taskboard">
-          <div id="taskboard-header">
-            Taskboard
+    <div class="container-fluid"> 
+      <div class="row">
+        <div id="map-canvas" class="col-sm-9"></div>
+        <div id="sidebar" class="col-sm-3">
+          <div id="sidebar-inner">
+            <form action="#" id="uploader"></form>
+            <div id="file-handler">
+              <ul>
+              </ul>
+            </div>
+            <div id ="taskboard">
+              <div id="taskboard-header">
+                Taskboard
+              </div>
+              <div id="taskboard-content">
+              </div>
+            </div>
+            <div id="full-board">
+              Full Board
+            </div>
           </div>
-          <div id="taskboard-content">
-          </div>
-        </div>
-        <div id="full-board">
-          Full Board
         </div>
       </div>
     </div>

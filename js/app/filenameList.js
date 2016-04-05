@@ -17,7 +17,7 @@ define(['jquery'], function($) {
     if (filenames.length > 0) {
       var html ='';
       for (var i = 0; i < filenames.length; i++) {
-        html += '<li id="filenameList" class="' + filenames[i] + '">' + filenames[i] + '</li>';
+        html += '<li id="filenameList" class="' + filenames[i] + '"><i class="fa fa-trash"></i> ' + filenames[i] + '</li>';
       }
       container.html(html);
       container.addClass('populated');
