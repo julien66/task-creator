@@ -20,7 +20,10 @@
             </div>
             <div class="form-group row" id="tp-radius">
               <label for="tp-radius-input" class="col-sm-3 form-control-label">Radius</label>
-              <input id="tp-radius-input" class="col-sm-6" name="radius" type="number" min="200" step="100" value="400">
+              <div class="input-group col-sm-6">
+                <input id="tp-radius-input" class="form-control" name="radius" type="number" min="200" step="100" placeholder="400">
+                <div class="input-group-addon">Meters</div>
+              </div>
             </div>
             <div class="form-group row" id="tp-mode">
               <label for="tp-mode-select" class="col-sm-3 form-control-label">Mode</label>
@@ -29,11 +32,17 @@
             </div>
             <div class="form-group row" id="tp-open">
               <label for="tp-open-input" class="col-sm-3 form-control-label">Opening Time</label>
-              <input id="tp-open-input" class="col-sm-6" name="opening_time" type="text">
+              <div class="input-group col-sm-6">
+                <input id="tp-open-input" class="form-control" name="opening_time" type="text" placeholder="12:00:00">
+                <div class="input-group-addon">hh:mm:ss</div>
+              </div>
             </div>
             <div class="form-group row" id="tp-close">
               <label for="tp-close-input" class="col-sm-3 form-control-label">Closing Time</label>
-              <input id="tp-close-input" class="col-sm-6" name="close_time" type="text">
+              <div class="input-group col-sm-6">
+                <input id="tp-close-input" class="form-control" name="close_time" type="text" placeholder="18:00:00">
+                <div class="input-group-addon">hh:mm:ss</div>
+              </div>
             </div>
             <input id="tp-index" type="hidden" name="country" value="">
           </div>

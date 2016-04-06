@@ -2,10 +2,9 @@
  * @file
  * Full Board Module for the task Creator.
  */
-define(['jquery', 'app/modalWindows', 'app/helper', 'app/param', 'rejs!task/templates/fullboardTurnpoint', 'rejs!task/templates/fullboard'],
-function($, modalWindows, helper, param, turnpointTemplate, fullTemplate) {
+define(['jquery', 'app/helper', 'app/param', 'rejs!task/templates/fullboardTurnpoint', 'rejs!task/templates/fullboard'],
+function($, helper, param, turnpointTemplate, fullTemplate) {
   var link = $("#full-board");
-  var modalWindow;
  
   link.click(function(e) {
     var e = document.createEvent("CustomEvent");
@@ -19,7 +18,7 @@ function($, modalWindows, helper, param, turnpointTemplate, fullTemplate) {
 
   var open = function(task) {
     var content = build(task);
-    modalWindow = modalWindows.add(content);
+    //modalWindow = modalWindows.add(content);
   }
   
   $(document).on('click', '#edit-task', function(e) {
@@ -29,26 +28,23 @@ function($, modalWindows, helper, param, turnpointTemplate, fullTemplate) {
       newTask : form,
     });
     document.dispatchEvent(e);
-    modalWindows.remove(modalWindow);
   });
   
   $(document).on('click', '#delete-task', function(e) {
     var e = document.createEvent("customEvent");
     e.initCustomEvent('deleteTask', false, false, {});
     document.dispatchEvent(e);
-    modalWindows.remove(modalWindow);
   });
  
   $(document).on('click', '#export-task', function(e) {
     var e = document.createEvent("customEvent");
     e.initCustomEvent('exportTask', false, false, {});
     document.dispatchEvent(e);
-    modalWindows.remove(modalWindow);
   });
   
   $(document).on('click', '#task-config .turnpoint', function(e) {
     var index = $(this).attr('index');
-    modalWindows.remove(modalWindow);
+    //modalWindows.remove(modalWindow);
     var e = document.createEvent("CustomEvent");
     e.initCustomEvent('openMapTurnpointConfig', false, false, {
       index: index,

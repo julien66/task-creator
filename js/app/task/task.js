@@ -17,6 +17,7 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
   }
 
   var editTurnpoint = function(info) {
+    console.log(turnpoints, info.index);
     turnpoints[info.index].setTurnpoint(info);
     taskAdvisor.turnpointCheck(turnpoints[info.index], turnpoints);
     taskChange();

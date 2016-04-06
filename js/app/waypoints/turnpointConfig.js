@@ -16,12 +16,12 @@ function($, b, helper, param, turnpointTemplate) {
     // Getting Form Value
     var turnpointInfo = collectForm();
     var e = document.createEvent("CustomEvent");
-    console.log(waypoint, turnpointInfo);
     e.initCustomEvent('addTurnpoint', false, false, {
       waypoint: waypoint,
       turnpointInfo: turnpointInfo,
     });
     document.dispatchEvent(e);
+    $("#turnpoint-config").modal('hide');
   });
  
   $(document).on('change', '#turnpoint-config select', function(e) {
@@ -54,6 +54,7 @@ function($, b, helper, param, turnpointTemplate) {
       index: index,
     });
     document.dispatchEvent(e);
+    $("#turnpoint-config").modal('hide');
   });
   
   $(document).on('click', '#edit-turnpoint', function(e) {
@@ -63,6 +64,7 @@ function($, b, helper, param, turnpointTemplate) {
       info: info,
     });
     document.dispatchEvent(e);
+    $("#turnpoint-config").modal('hide');
   });
 
   var openConfigureWindow = function(info) {
@@ -80,6 +82,7 @@ function($, b, helper, param, turnpointTemplate) {
     $("#tp-radius input").val(info.radius); 
     $("#tp-open input").val(info.open); 
     $("#tp-close input").val(info.close); 
+    $("#tp-index").val(info.index);
 
     //handleFormDependencies(info.type, $("#turnpoint-config"));
     if (mode == 'edit') {
