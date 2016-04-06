@@ -45,9 +45,9 @@ function(param, turnpointConfig, markerWindow) {
         }
         if (this.edit == true) {
           var content = this.turnpoint.getConfigurationForm('edit');
-          map.infoWindow = new google.maps.InfoWindow({
+          /*map.infoWindow = new google.maps.InfoWindow({
             content : content, 
-          });
+          });*/
           delete this.turnpoint;
           this.edit = false;
         } 
@@ -56,8 +56,8 @@ function(param, turnpointConfig, markerWindow) {
           map.infoWindow = new google.maps.InfoWindow({
             content: content,
           });
+          map.infoWindow.open(map, this);
         }
-        map.infoWindow.open(map, this);
       });
 
       return this.marker;

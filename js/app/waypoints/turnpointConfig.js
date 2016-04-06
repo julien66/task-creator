@@ -2,26 +2,30 @@
  * @file
  * Turnpoint Configurator module for the task creator
  */
-define(['jquery', 'app/helper', 'app/param', 'app/modalWindows', 'rejs!waypoints/templates/turnpoint'],
-function($, helper, param, modalWindows, turnpointTemplate) {
+define(['jquery', 'bootstrap', 'app/helper', 'app/param', 'rejs!waypoints/templates/turnpoint'],
+function($, b, helper, param, turnpointTemplate) {
   var waypoint;
-  var modalWindow;
+  var content = turnpointTemplate({});
+  $("body").append(content);
+
+  $("#turnpoint-config").on('show.bs.modal', function(e) {
+    handleFormDependencies($("#tp-type select").val(), $("#turnpoint-config"));
+  });
 
   $(document).on('click', '#add-turnpoint', function(e) {
     // Getting Form Value
     var turnpointInfo = collectForm();
     var e = document.createEvent("CustomEvent");
+    console.log(waypoint, turnpointInfo);
     e.initCustomEvent('addTurnpoint', false, false, {
       waypoint: waypoint,
       turnpointInfo: turnpointInfo,
     });
     document.dispatchEvent(e);
-    modalWindows.remove(modalWindow);
   });
-  
+ 
   $(document).on('change', '#turnpoint-config select', function(e) {
     var select = $(this).val();
-    $(this).parent().attr('class', 'tp-' + select);
     handleFormDependencies(select, false);
   });
   
@@ -63,25 +67,32 @@ function($, helper, param, modalWindows, turnpointTemplate) {
 
   var openConfigureWindow = function(info) {
     waypoint = info;
-    var content = buildForm('create', info);
-    modalWindow = modalWindows.add(content);
+    buildForm('create', info);
   }
 
   var buildForm = function(mode, info) {
-    if (mode == 'create') info = param.turnpoint.default;
     var typeOptions = helper.formatOptions(param.turnpoint.allowed.type, info.type);
     var goalOptions = helper.formatOptions(param.turnpoint.allowed.goalType, info.goalType);
     var modeOptions = helper.formatOptions(param.turnpoint.allowed.mode, info.mode);
-    var content = turnpointTemplate({
-      info : info,
-      typeOptions : typeOptions,
-      goalOptions : goalOptions,
-      modeOptions : modeOptions,
-      mode : mode,
-    });
-    var modifiedContent = $(content);
-    handleFormDependencies(modifiedContent.find("#tp-type select").val(), modifiedContent);
-    return modifiedContent.html();
+    $("#tp-type select").html(typeOptions);
+    $("#tp-goal-type select").html(goalOptions);
+    $("#tp-mode select").html(modeOptions);
+    $("#tp-radius input").val(info.radius); 
+    $("#tp-open input").val(info.open); 
+    $("#tp-close input").val(info.close); 
+
+    //handleFormDependencies(info.type, $("#turnpoint-config"));
+    if (mode == 'edit') {
+      $("#turnpoint-config").modal();
+      $("#add-turnpoint").hide();
+      $("#edit-turnpoint").show();
+      $("#delete-turnpoint").show();
+    }
+    else {
+      $("#add-turnpoint").show();
+      $("#edit-turnpoint").hide();
+      $("#delete-turnpoint").hide();
+    }
   }
 
   

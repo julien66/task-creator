@@ -7,7 +7,8 @@
       <li class="list-group-item lon"> <span class="label label-default">Longitude</span>  <%- info.y %></li>
       <li class="list-group-item filename"> <span class="label label-default">Source File</span>  <%- info.filename %> </li>
     </ul>
-</div>
-<div id="configure-turnpoint" filename="<%- info.filename %>" tid="<%- info.id %>" class="btn btn-success">
-  Add To Task
+  </div>
+  <button id="configure-turnpoint" filename="<%- info.filename %>" tid="<%- info.id %>" class="btn btn-success" type="button" data-toggle="modal" data-target="#turnpoint-config">
+    Add To Task
+  </button>
 </div>

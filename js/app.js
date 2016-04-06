@@ -14,7 +14,7 @@ requirejs.config({
   paths : {
     app : "../app",
     async : "requirejs-plugins/src/async",
-    bootstrap : "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
+    bootstrap : "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min",
     css: "require-css/css",
     Dropzone : "dropzone/downloads/dropzone-amd-module",
     ejs : 'ejs-0.8.3/ejs',
