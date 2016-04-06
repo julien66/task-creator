@@ -28,6 +28,9 @@ define(['app/map', 'app/uploader', 'jquery'], function(map, uploader, $) {
     var filename = taskUrl.split("/").pop();
     $.get(taskUrl, function(data) {
       uploader.setFilename(filename);
+      if (typeof(data) !== "string") {
+        data = new XMLSerializer().serializeToString(data);
+      }
       uploader.parse(data);
     });
   }

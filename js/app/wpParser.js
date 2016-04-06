@@ -6,7 +6,7 @@ define(['jquery', 'waypoints/waypoints', 'task/task', 'tracks/tracks', 'formats/
 function($, waypoints, task, tracks, oziOld, ozi, cup, igc, tsk, gpx) {
  
   var formats = [oziOld, ozi, cup, igc, tsk, gpx]; 
-  var parse = function(text, filename) { 
+  var parse = function(text, filename) {
     var result = formatCheck(text, filename);
     var format = result.format;
 
