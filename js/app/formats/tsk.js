@@ -29,6 +29,9 @@ define([], function() {
         radius : rtetp[i].getElementsByTagName('radius')[0].childNodes[0].nodeValue,
         type : rtetp[i].getElementsByTagName('type')[0].childNodes[0].nodeValue,
       };
+      if (tp.type == 'endofspeedsection') {
+        tp.type = 'end-of-speed-section';
+      } 
 
       var wp = {  
         filename : filename, //rtetp[i].getElementsByTagName('filename')[0].childNodes[0].nodeValue,

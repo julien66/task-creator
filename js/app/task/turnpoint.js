@@ -12,6 +12,8 @@ define(['app/param', 'waypoints/waypoint'], function(param, Waypoint) {
     this.type = param.turnpoint.default.type;
     this.radius = param.turnpoint.default.radius;
     this.mode = param.turnpoint.default.mode;
+    this.icon = param.turnpoint.icon[this.type];
+    this.shortName = param.turnpoint.shortName[this.type];
     this.open = 0;
     this.close = 0;
     this.goalType = param.turnpoint.default.goalType;
@@ -19,7 +21,9 @@ define(['app/param', 'waypoints/waypoint'], function(param, Waypoint) {
     this.setTurnpoint = function(turnpointInfo) {
       for (var element in turnpointInfo) {
         this[element] = turnpointInfo[element];
-      } 
+      }
+      this.icon = param.turnpoint.icon[this.type];
+      this.shortName = param.turnpoint.shortName[this.type];
     }
 
     this.renderTurnpoint = function(google, map, turnpoints) {

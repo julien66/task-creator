@@ -45,13 +45,27 @@ define([], function() {
         radius : 400,
         type : 'takeoff',
       },
+      icon : {
+        takeoff : 'plane',
+        start : 'play',
+        turnpoint : 'forward',
+        ess : 'stop',
+        goal : 'thumbs-up',
+      },
+      shortName : {
+        takeoff : 'to',
+        start : 'sss',
+        turnpoint : 'tp',
+        'end-of-speed-section' : 'ess',
+        goal : 'goal',
+      },
       dependencies : {
         show : {
           takeoff : ['close', 'mode', 'open', 'radius'],
           start : ['mode', 'open', 'radius'],
           turnpoint : ['mode', 'radius'],
           'end-of-speed-section' : ['close', 'mode', 'radius'],
-          goal : ['close', 'goal-type'],
+          goal : ['close', 'goal-type', 'radius'],
           line : ['close'],
           cylinder : ['close', 'radius'],
         },
@@ -60,7 +74,7 @@ define([], function() {
           start : ['close', 'goal-type'],
           turnpoint : ['close', 'goal-type', 'open'],
           'end-of-speed-section' : ['open', 'goal-type'],
-          goal : ['mode', 'open', 'radius'],
+          goal : ['mode', 'open'],
           line : ['mode', 'open', 'radius'],
           cylinder : ['mode', 'open'],
         }

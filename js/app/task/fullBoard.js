@@ -4,6 +4,9 @@
  */
 define(['jquery', 'app/helper', 'app/param', 'rejs!task/templates/fullboardTurnpoint', 'rejs!task/templates/fullboard'],
 function($, helper, param, turnpointTemplate, fullTemplate) {
+  var content = fullTemplate({});
+  $('body').append(content);
+
   var link = $("#full-board");
  
   link.click(function(e) {
@@ -18,7 +21,7 @@ function($, helper, param, turnpointTemplate, fullTemplate) {
 
   var open = function(task) {
     var content = build(task);
-    //modalWindow = modalWindows.add(content);
+     
   }
   
   $(document).on('click', '#edit-task', function(e) {
@@ -83,7 +86,9 @@ function($, helper, param, turnpointTemplate, fullTemplate) {
         times.close[type] = turnpoints[i].close;
       } 
     }
-    return fullTemplate({
+    
+    $("#task-config").modal();
+    /*return fullTemplate({
       taskInfo : taskInfo,
       taskNum : taskNum,
       taskType : taskType,
@@ -91,7 +96,7 @@ function($, helper, param, turnpointTemplate, fullTemplate) {
       turnpoints : turnpoints,
       turnpointType : turnpointType,
       times : times,
-    });
+    });*/
   }
   
   function collectForm() {

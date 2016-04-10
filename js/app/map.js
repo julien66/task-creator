@@ -17,6 +17,7 @@ function(param, geolocation, google, task, keyboard) {
   var mapOptions = {
     center: new google.maps.LatLng(startX, startY),
     zoom: 8,
+    mapTypeId: google.maps.MapTypeId.TERRAIN
   };
 
   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);

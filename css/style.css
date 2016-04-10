@@ -88,31 +88,10 @@ select {
   text-decoration : underline;
 }
 
-/**
- * Marker Window.
- */
-/*.turnpoints-popup, #turnpoint-config {
- -webkit-touch-callout: none;
- -webkit-user-select: none;
- -khtml-user-select: none;
- -moz-user-select: none;
- -ms-user-select: none;
- user-select: none;
-}
-
-#turnpoint-config input:focus,
-#turnpoint-config select:focus {
-  outline: none;
-}*/
-
 gm-panel li {
   border: none;
 }
 
-
-/**
- * Tunrpoint configuration window.
- */
 
 /**
  * Taskboard.
@@ -138,8 +117,15 @@ gm-panel li {
   text-align: center;
 }
 
+
+#taskboard-content ul {
+  padding-left : 5px;
+}
+
 #taskboard-content li {
   cursor: pointer;
+  list-style-image : none;
+  list-style-type : none;
 }
 
 #taskboard-content li:hover {
@@ -153,194 +139,6 @@ gm-panel li {
   font-style: italic;
   padding-right: 10px;
   font-weight: bold;
-}
-
-/**
- * FullBoard (Check Task).
- */
-#full-board {
-  display : inline-block;
-  font-weight: bold;
-  text-align: right;
-  padding : 0px 5px 0px 20px;
-  float: right;
-  background: url('../images/arrow.png') left center no-repeat;
-  margin-top: 10px;
-  cursor: pointer;
-  visibility: hidden;
-}
-
-#full-board:hover {
-  text-decoration: underline;
-}
-
-#task-config div {
-  display: inline-block;
-  padding: 10px;
-  color: #000;
-  border: 1px solid #ccc;
-  text-transform: uppercase;
-  text-align: left;
-  font-weight : bold;
-  box-sizing: border-box;
-  margin : 10px 0px;
-}
-
-#task-config div span {
-  color: #111;
-  font-family: cursive;
-  font-size: 0.7em;
-  font-style: italic;
-}
-
-#task-config div.left {
-  float: left;
-  width: 60%;
-}
-
-#task-config div.right {
-  float: right;
-  width: 39%;
-}
-
-#fullboard-type, #fullboard-takeoff, #fullboard-start {
-clear : both
-}
-
-div#fullboard-times, div#fullboard-right-infos {
-  border: none;
-  padding: 0px;
-}
-
-div#fullboard-times div {
-  display: block;
-  clear: both;
-  margin: 0px;
-}
-
-div#fullboard-right-infos div {
-  display: inline-block;
-  clear: both;
-  margin: 0px;
-  box-sizing: border-box;
-}
-
-div#fullboard-date {
-  width: 60%;
-}
-
-div#fullboard-window {
-  border-bottom-width: 1px;
-}
-
-div#fullboard-window span,
-div#fullboard-task-deadline li {
-  margin: 0 10px;
-}
-
-div#fullboard-task-deadline {
-  border-top-width: 1px;
-}
-
-div#fullboard-task-deadline li {
-  display : inline;
-  list-style-type : none;
-}
-
-
-div#fullboard-task-deadline li span{
-  font-family : cursive;
-  font-size: 0.8em;
-  font-style: italic;
-  font-weight: bold;
-}
-
-div#fullboard-turn {
-  border: 0px;
-  width: 30%;
-}
-
-div#fullboard-turn span#fullboard-turn-word {
-  font-size: 0.7em;
-}
-
-div#fullboard-turn span {
-  text-align: center;
-  color: #FF0000;
-  margin: 0px 10px;
-  font-size: 1em;
-  margin: 0px;
-}
-
-div#fullboard-task span {
-  display: block;
-  text-transform: uppercase;
-  color: #000;
-  font: inherit;
-  margin: 10px 0px;
-}
-
-div#fullboard-task span span {
-  display: inline;
-}
-
-div#fullboard-task span span,
-#task-config li {
-  color :#111;
-  font-size: 0.8em;
-  font-weight: normal;
-  font-family: cursive;
-  font-style: italic;
-}
-
-#task-config span.baseInfo {
-  margin-right: 20px;
-  font-weight: bold;
-  font-size: 0.8em;
-}
-
-#task-config ul {
-  padding: 0px;
-}
-
-#task-config .turnpoint {
-  cursor: pointer;
-}
-
-#task-config .turnpoint:hover {
-  text-decoration: underline;
-}
-
-#task-config span.tp-radius,
-#task-config span.tp-entry,
-#task-config span.tp-exit,
-#task-config span.tp-cylinder,
-#task-config span.tp-line {
-  padding-left: 20px;
-}
-
-#task-config span.tp-radius:after {
-  content: "M";
-}
-
-#task-config span.tp-radius {
-  background : url("../images/turnpoint/radius.png") center left no-repeat;
-}
-
-#task-config span.tp-entry {
-  background : url("../images/turnpoint/entry.png") center left no-repeat;
-}
-
-#task-config span.tp-exit {
-  background : url("../images/turnpoint/exit.png") center left no-repeat;
-}
-
-#task-config span.tp-line {
-  background : url("../images/turnpoint/line.png") center left no-repeat;
-}
-
-#task-config span.tp-cylinder {
-  background : url("../images/turnpoint/cylinder.png") center left no-repeat;
 }
 
 span#fullboard-xm {
