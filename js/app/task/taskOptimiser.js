@@ -16,27 +16,31 @@ define(["app/param"], function(param) {
     for (var i = 0; i < turnpoints.length; i++) {
       // For all turnpoint excpet the last one.
       if (i < turnpoints.length - 1) {
-        // Getting the hearing.
+        // Getting the heading.
         var heading = google.maps.geometry.spherical.computeHeading(turnpoints[i].latLng, turnpoints[i + 1].latLng);
         // Unsure heading is always positive.
         if (heading < 0) heading += 360;
         if (headings.length >= 1) {
           // Switch first heading from 180°.
           var pastHeading = headings[i- 1];
+          if (pastHeading < 0) {
+            pastHeading += 180;
+          }
           // We need to catch the right angle !!!
           if (pastHeading > heading) {
             pastHeading -= 180;
           }else {
             pastHeading += 180;
           }
-          
+           
           // If both turnpoints are the same. Keep past heading instead of 0.
-          if (turnpoints[i].latLng == turnpoints[i + 1].latLng) {
+          if (turnpoints[i].latLng.equals(turnpoints[i + 1].latLng)) {
             heading = pastHeading;
           }
           
           // Now we can get the average heading. (Bisectrix).
           var middleHeading = (pastHeading + heading) / 2;
+          
           // Offset from the center to the radius to get the intermediary point.
           var fastPoint = google.maps.geometry.spherical.computeOffset(turnpoints[i].latLng, turnpoints[i].radius, middleHeading); 
         }
