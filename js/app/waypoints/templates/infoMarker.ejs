@@ -1,13 +1,14 @@
-<div class="turnpoints-popup">
-  <h1 class="turnpoints-name"><%- info.name %></h1>
-  <div id="turnpoints-content">
-    <div class="id"> Id : <%- info.id %></div>
-    <div class="altitude"> Altitude : <%- altitude %> m</div>
-    <div class="lat"> Latitude : ' <%- info.x %></div>
-    <div class="lon"> Longitude : <%- info.y %></div>
-    <div class="filename"> Source file : <%- info.filename %> </div>
-    <div id="configure-turnpoint" filename="<%- info.filename %>" tid="<%- info.id %>"  class="add-task-turnpoint form-button">
-      Add To Task
-    </div>
+<div class="panel panel-default gm-panel">
+  <div class="panel-heading"><%- info.name %></div>
+    <ul class="list-group">
+      <li class="list-group-item id"> <span class="label label-default">Id</span>  <%- info.id %></li>
+      <li class="list-group-item altitude"> <span class="label label-default">Altitude</span>  <%- altitude %> m</li>
+      <li class="list-group-item lat"> <span class="label label-default">Latitude</span>  <%- info.x %></li>
+      <li class="list-group-item lon"> <span class="label label-default">Longitude</span>  <%- info.y %></li>
+      <li class="list-group-item filename"> <span class="label label-default">Source File</span>  <%- info.filename %> </li>
+    </ul>
   </div>
+  <button id="configure-turnpoint" filename="<%- info.filename %>" tid="<%- info.id %>" class="btn btn-success" type="button" data-toggle="modal" data-target="#turnpoint-config">
+    Add To Task
+  </button>
 </div>

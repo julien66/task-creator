@@ -1,44 +1,58 @@
-<div id="dummydiv" title="do-not-remove">
-  <div id="turnpoint-config">
-    <div id="turnpoint-header">
-      Turnpoint configuration : <%- info.name %>
-    </div>
-    <div id="turnpoint-content">
-      <form action="#" autocomplete="off" id="turnpoint-form-config">
-        <ul>
-          <li id="tp-type" class="tp-<%- info.type %>">Type
-            <select autocomplete="off" id="tp-type-select" name="type">
-              <%- typeOptions %>
-            </select>
-          </li>
-          <li id="tp-goal-type" class="tp-<%- info.goalType %>"> Goal type :
-            <select autocomplete="off" id="tp-goal-type-select" name="goal-type">
-              <%- goalOptions %>
-            </select>
-          </li>
-          <li id="tp-radius">Radius :
-            <input id="tp-radius-input" type="text" name="radius" value="<%- info.radius %>"/> m
-          </li>
-          <li id="tp-mode" class="tp-<%- info.mode %>">Mode :
-            <select id="tp-mode-select" autocomplete="off" name="mode">
-              <%- modeOptions %>
-            </select>
-          </li>
-          <li id="tp-open">Opening Time :
-            <input id="tp-open-input" type="text" name="opening_time" value="<%- info.open %>"/>
-          </li>
-          <li id="tp-close">Closing time :
-            <input id="tp-close-input" type="text"  name="close_time" value="<%- info.close %>"/>
-          </li>
-          <input id="tp-index" type="hidden" name="country" value="<%- info.index %>">
-        </ul>
-        <% if (mode == 'create') { %>
-          <div id="add-turnpoint" class="add-task-turnpoint form-button"> Add Turnpoint !</div>
-        <% } else { %>
-          <div id="edit-turnpoint" class="edit-task-turnpoint form-button"> Edit Turnpoint !</div>
-          <div id="delete-turnpoint" class="delete-task-turnpoint form-button"> Delete Turnpoint !</div>
-        <% } %>
-      </form>
+<div id="turnpoint-config" class="modal fade" role="dialog" aria-labelledby="turnpoint-config-label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div id="turnpoint-header" class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="turnpoint-config-label">Turnpoint Configuration</h4>
+      </div>
+      <div id="turnpoint-content" class="modal-body">
+        <form action="#" autocomplete="off" id="turnpoint-form-config">
+          <div class="form-group">
+            <div class="form-group row" id="tp-type">
+              <label for="tp-type-select" class="col-sm-3 form-control-label">Type</label>
+              <select id="tp-type-select" class="col-sm-6" name="type" autocomplete="off">
+              </select>
+            </div>
+            <div class="form-group row" id="tp-goal-type">
+              <label for="tp-goal-type-select" class="col-sm-3 form-control-label">Goal type</label>
+              <select id="tp-goal-type-select" class="col-sm-6" name="goal-type" autocomplete="off">
+              </select>
+            </div>
+            <div class="form-group row" id="tp-radius">
+              <label for="tp-radius-input" class="col-sm-3 form-control-label">Radius</label>
+              <div class="input-group col-sm-6">
+                <input id="tp-radius-input" class="form-control" name="radius" type="number" min="200" step="100" placeholder="400">
+                <div class="input-group-addon">Meters</div>
+              </div>
+            </div>
+            <div class="form-group row" id="tp-mode">
+              <label for="tp-mode-select" class="col-sm-3 form-control-label">Mode</label>
+              <select id="tp-mode-select" class="col-sm-6" name="mode" autocomplete="off">
+              </select>
+            </div>
+            <div class="form-group row" id="tp-open">
+              <label for="tp-open-input" class="col-sm-3 form-control-label">Opening Time</label>
+              <div class="input-group col-sm-6">
+                <input id="tp-open-input" class="form-control" name="opening_time" type="text" placeholder="12:00:00">
+                <div class="input-group-addon">hh:mm:ss</div>
+              </div>
+            </div>
+            <div class="form-group row" id="tp-close">
+              <label for="tp-close-input" class="col-sm-3 form-control-label">Closing Time</label>
+              <div class="input-group col-sm-6">
+                <input id="tp-close-input" class="form-control" name="close_time" type="text" placeholder="18:00:00">
+                <div class="input-group-addon">hh:mm:ss</div>
+              </div>
+            </div>
+            <input id="tp-index" type="hidden" name="country" value="">
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="add-turnpoint" class="btn btn-success">Add Turnpoint!</button>
+            <button type="button" id="edit-turnpoint" class="btn btn-warning">Edit Turnpoint!</button>
+            <button type="button" id="delete-turnpoint" class="btn btn-danger">Delete Turnpoint!</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

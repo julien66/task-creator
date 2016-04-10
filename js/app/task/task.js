@@ -5,7 +5,7 @@
 define(['task/taskBoard', 'task/turnpoint', 'task/fullBoard', 'app/param', 'task/taskOptimiser', 'task/taskAdvisor', 'task/taskExporter'],
 function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExporter) {
   var turnpoints = [];
-  var taskInfo = param.task.default ;
+  var taskInfo = param.task.default;
 
   var addTurnpoint = function(waypoint, turnpointInfo) {
     var turnpoint = new Turnpoint(waypoint);
@@ -120,7 +120,9 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
 
   var onNewTask = function(e) {
     var waypoints = e.detail.waypoints;
-    var tps = e.detail.task;
+    var tps = e.detail.task.turnpoints;
+    taskInfo = e.detail.task;
+    taskInfo.turn =  taskInfo.date.substr(0, 2) % 2 == 0 ? "Right" : "Left";
     if (waypoints) {
       for (var i = 0; i < waypoints.length; i++) {
         addTurnpoint(waypoints[i], tps[i]);

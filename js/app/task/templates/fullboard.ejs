@@ -1,81 +1,106 @@
-<div id="task-config"><form action="#" autocomplete="off" id="task-form-config">
-  <div id="fullboard-type" class="left"> Type 
-    <select id="fullboard-type-select" autocomplete="off" name="type"><%- taskType %></select>
-  </div>
-  <div id="fullboard-num" class="right">Task 
-    <select id="fullboard-num-select" autocomplete="off" name="num"><%- taskNum %></select>
-  </div>
-  <div id="fullboard-takeoff" class="left">take off
-    <ul>
-    <% for (var i = 0; i < turnpointType.takeoff.length; i++) { %>
-      <%-  turnpointType.takeoff[i] %>
-    <% } %>
-    </ul>
-  </div>
-  <div id="fullboard-right-infos" class="right">
-    <div id="fullboard-date" class="">Date 
-      <span><%- taskInfo.date %></span>
+<div id="task-config" class="modal fade" role="dialog" aria-labelledby="">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div id="fullboard-header" class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="turnpoint-config-label">Task Configuration</h4>
+        <span id="fullboard-xm">XM was here !</span>
+      </div>
+      <div id="fullboard-content" class="modal-body">
+        <form action="#" autocomplete="off" id="task-form-config">
+          <div class="row">
+            <div class="col-xs-7" class="row">
+              <div class="container-fluid">
+                <div id="fullboard-takeoff">
+                  <h5><i class="fa fa-plane"></i>Take off</h5>
+                  <ol></ol>
+                </div>
+              </div>
+              <div class="container-fluid">
+                <div id="fullboard-start">
+                  <h5><i class="fa fa-play"></i>Start</h5>
+                  <ol></ol>
+                </div>
+              </div>
+              <div class="container-fluid">
+                <span id="fullboard-turnpoint">
+                  <h5><i class="fa fa-forward"></i>Turnpoint</h5> 
+                  <ol></ol>
+                </span>
+              </div>
+              <div class="container-fluid">
+                <span id="fullboard-end-of-speed-section">
+                  <h5><i class="fa fa-stop"></i>End of speed section</h5>
+                  <ol></ol>
+                </span>
+              </div>
+              <div class="container-fluid">
+                <span id="fullboard-goal">
+                  <h5><i class="fa fa-thumbs-up"></i>Goal</h5> 
+                  <ol></ol>
+                </span>
+              </div>
+            </div>
+            <div class="col-xs-5">
+              <div class="container-fluid">
+                <div class="form-group">
+                  <div class="form-group row" id="fullboard-type">
+                    <label for="fullboard-type-select" class="col-xs-3 form-control-label">Type</label>
+                    <select id="fullboard-type-select" class="col-xs-9" autocomplete="off" name="type"></select>
+                  </div>
+                  <div class="form-group row" id="fullboard-num"> 
+                    <label for="fullboard-num-select" class="col-md-6 form-control-label">Task #</label>
+                    <select id="fullboard-num-select" class="col-md-4" autocomplete="off" name="num"></select>
+                  </div>
+                </div>
+              </div>
+              <div id="fullboard-right-infos">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div id="fullboard-date" class="col-xs-8">
+                      <h5><i class="fa fa-calendar"></i>Date</h5>
+                      <span></span>
+                    </div>
+                    <div id="fullboard-turn" class="col-xs-4">
+                      <h5 id="fullboard-turn-word"></h5>
+                      <div id="fullboard-arrow"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid">
+                  <div id="fullboard-times">
+                    <h5><i class="fa fa-clock-o"></i>Times</h5>
+                    <div>
+                      <span id="window-open" class="label label-default">Window open</span> <span id="fullboard-takeoff-open"></span>
+                    </div>
+                    <div>
+                      <span id="window-close" class="label label-default">Window close</span> <span id="fullboard-takeoff-close"></span>
+                    </div>
+                    <div>
+                      <span id="start-open" class="label label-default">Start open</span> <span id="fullboard-start-open"></span>
+                    </div>
+                    <div>
+                      <span class="label label-default">ESS close</span><span id="fullboard-end-of-speed-section-close"></span>
+                    </div>
+                    <div>
+                      <span class="label label-default">Goal close</span> <span id="fullboard-goal-close"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid">
+                  <h5>Distance</h5>
+                  <div id="fullboard-distance"></div> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" id="export-task" class="btn btn-success"> Export Task</button>
+          <button type="button" id="edit-task" class="btn btn-warning"> Edit Task</button>
+          <button type="button" id="delete-task" class="btn btn-danger"> Delete Task</button>
+        </div>
+      </div>
     </div>
-    <div id="fullboard-turn" class="">
-      <span id="fullboard-arrow"><%- turn %></span>
-      <span id="fullboard-turn-word"><%- taskInfo.turn %></span>
-    </div>
   </div>
-  <!--<div id="fullboard-start" class="left">start
-    <span class="fullboard-value"></span>
-  </div>--!>
-  <div id="fullboard-times" class="right">
-    <div id="fullboard-window" class="">window 
-      <span id="window-open">open <%- times.open.takeoff %></span>
-      <span id="window-close">close <%- times.close.takeoff %></span>
-    </div>
-    <div id="fullboard-task-deadline" class="">task deadline
-      <ul>
-        <li>
-          <span id="ess-time"> ESS </span>
-          <span class="value"><%- times.close['end-of-speed-section'] %></span>
-        </li>
-        <li>
-          <span id="goal-time">Goal </span>
-          <span class="value"><%- times.close['goal'] %></span>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div id="fullboard-task" class="left">
-    <span id="fullboard-turnpoint">turnpoints 
-      <ul>
-      <% for(var i=0; i < turnpoints.length; i++) { %>
-        <% if (turnpoints[i].type == 'start' || turnpoints[i].type == 'turnpoint') { %>
-          <li class="turnpoint tp-<%- turnpoints[i].type %>" index="<%- turnpoints[i].index %>">
-            <span class="baseInfo">
-              <%- turnpoints[i].id + " " + turnpoints[i].name %>
-            </span>
-            <span class="turnpoint tp-<%- turnpoints[i].mode %>"><%- turnpoints[i].mode %></span>
-            <span class="turnpoint tp-radius"><%- turnpoints[i].radius %></span>
-          </li>
-        <% } %>
-      <% } %>
-      </ul>
-    </span>
-    <span id="fullboard-end-of-speed-section">end of speed section
-      <ul>
-      <% for (var i = 0; i < turnpointType['end-of-speed-section'].length; i++) { %>
-        <%-  turnpointType['end-of-speed-section'][i] %>
-      <% } %>
-      </ul>
-    </span>
-    <span id="fullboard-goal">goal 
-      <ul>
-      <% for (var i = 0; i < turnpointType.goal.length; i++) { %>
-        <%-  turnpointType.goal[i] %>
-      <% } %>
-      </ul>
-    </span>
-  </div>
-  <div id='fullboard-task-distance' class='right'>distance <span><%- Math.round(taskInfo.distance) / 1000 %> Km</span></div>
-</form></div>
-<div id="export-task" class="export-full-task form-button"> Export Task !</div>
-<div id="edit-task" class="edit-full-task form-button"> Edit Task !</div>
-<div id="delete-task" class="delete-full-task form-button"> Delete Task !</div>
-<span id="fullboard-xm">XM was here !</span>
+</div>

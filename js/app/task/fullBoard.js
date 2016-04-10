@@ -2,10 +2,9 @@
  * @file
  * Full Board Module for the task Creator.
  */
-define(['jquery', 'app/modalWindows', 'app/helper', 'app/param', 'rejs!task/templates/fullboardTurnpoint', 'rejs!task/templates/fullboard'],
-function($, modalWindows, helper, param, turnpointTemplate, fullTemplate) {
+define(['jquery', 'app/helper', 'app/param', 'rejs!task/templates/fullboardTurnpoint', 'rejs!task/templates/fullboard'],
+function($, helper, param, turnpointTemplate, fullTemplate) {
   var link = $("#full-board");
-  var modalWindow;
  
   link.click(function(e) {
     var e = document.createEvent("CustomEvent");
@@ -14,12 +13,12 @@ function($, modalWindows, helper, param, turnpointTemplate, fullTemplate) {
   });
 
   var toggleLink = function(bool) {
-    (bool == true) ? link.css('visibility', 'visible') : link.css('visibility', 'hidden');
+    (bool == true) ? link.removeClass('hide') : link.addClass('hide');
   }
 
   var open = function(task) {
     var content = build(task);
-    modalWindow = modalWindows.add(content);
+     
   }
   
   $(document).on('click', '#edit-task', function(e) {
@@ -29,73 +28,64 @@ function($, modalWindows, helper, param, turnpointTemplate, fullTemplate) {
       newTask : form,
     });
     document.dispatchEvent(e);
-    modalWindows.remove(modalWindow);
+    $("#task-config").modal('hide')
   });
   
   $(document).on('click', '#delete-task', function(e) {
     var e = document.createEvent("customEvent");
     e.initCustomEvent('deleteTask', false, false, {});
     document.dispatchEvent(e);
-    modalWindows.remove(modalWindow);
+    $("#task-config").modal('hide')
   });
  
   $(document).on('click', '#export-task', function(e) {
     var e = document.createEvent("customEvent");
     e.initCustomEvent('exportTask', false, false, {});
     document.dispatchEvent(e);
-    modalWindows.remove(modalWindow);
   });
   
   $(document).on('click', '#task-config .turnpoint', function(e) {
     var index = $(this).attr('index');
-    modalWindows.remove(modalWindow);
     var e = document.createEvent("CustomEvent");
     e.initCustomEvent('openMapTurnpointConfig', false, false, {
       index: index,
     }); 
     document.dispatchEvent(e);
+    $("#task-config").modal('hide')
   });
 
   var build = function(task) {
+    // Refresh Fullboard Template.
+    $("#task-config").remove();
+    var content = fullTemplate({});
+    $('body').append(content);
+    
+    // Grab some usefull variable. 
     var turnpoints = task.turnpoints;
     var taskInfo = task.taskInfo;
     var taskType = helper.formatOptions(param.task.allowed.type, taskInfo.type);
     var taskNum = helper.formatOptions(param.task.allowed.num, taskInfo.num);
     var turn = (taskInfo.turn == 'right') ? '&#8635' : '&#8634';
-    var times = {
-      open : {
-        takeoff : 0,
-        'end-of-speed-section' : 0,
-        goal : 0,
-      },
-      close : {
-        win : 0,
-        ess : 0,
-        goal : 0,
-      }
-    }
+    
+    // Populate the fullboard.
+    $("#fullboard-type-select").html(taskType);
+    $("#fullboard-num-select").html(taskNum);
+    $("#fullboard-date span").html(task.taskInfo.date);
+    $("#fullboard-arrow").html(turn);
+    $("#fullboard-turn-word").html(taskInfo.turn);
+    $("#fullboard-distance").html(Math.round(taskInfo.distance) / 1000 + " Km");
 
-    var turnpointType = {};
-    for (var i = 0; i < param.turnpoint.allowed.type.length; i++) {
-      turnpointType[param.turnpoint.allowed.type[i]] = Array();
-    }
     for (var i = 0; i < turnpoints.length; i++) {
-      turnpointType[turnpoints[i].type].push(turnpointTemplate({turnpoint : turnpoints[i]}));
-      var type = turnpoints[i].type; 
-      if (type == 'end-of-speed-section' || type == 'goal' || type == 'takeoff' ) {
-        times.open[type] = turnpoints[i].open;
-        times.close[type] = turnpoints[i].close;
+      var type = turnpoints[i].type;
+      $("#fullboard-" + type + " ol").append(turnpointTemplate({turnpoint : turnpoints[i]}));
+      if (type == 'end-of-speed-section' || type == 'goal' || type == 'takeoff' || type == 'start' ) {
+        $("#fullboard-" + type + "-close").html(turnpoints[i].close);
+        $("#fullboard-" + type + "-open").html(turnpoints[i].open);
       } 
     }
-    return fullTemplate({
-      taskInfo : taskInfo,
-      taskNum : taskNum,
-      taskType : taskType,
-      turn : turn,
-      turnpoints : turnpoints,
-      turnpointType : turnpointType,
-      times : times,
-    });
+    
+    // Show it via modal.
+    $("#task-config").modal();
   }
   
   function collectForm() {

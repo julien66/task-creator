@@ -7,26 +7,18 @@
  * Main Layout.
  */
 html, body {
-  width: 100%;
   height: 100%;
-  margin : 0;
-  padding : 0;
   font-family : Roboto, Arial, sans-serif;
 }
 
-#map-canvas {
- width: 85%;
- height: 100%;
- float: left;
+
+.container-fluid, .row, #map-canvas, #sidebar {
+  height : 100%;
 }
 
 #sidebar {
- width: 15%;
- height: 100%;
- display: block;
- float: right;
- background-color: #111;
- color : #EEE;
+ background-color: #575F4E;
+ color : #FFF;
 }
 
 #sidebar-inner {
@@ -81,192 +73,67 @@ select {
  * Filename List.
  */
 #file-handler.populated {
-  background : repeating-linear-gradient(45deg, #DF7401, #DF7401 20px, #FF8000 20px, #FF8000 40px);
+  background : repeating-linear-gradient(45deg, #575F4E, #575F4E 20px, #879279 20px, #879279 40px);
   border: 1px solid #FFF;
   margin-top: 10px;
 }
 
 #filenameList {
  list-style: none;
- background: url('../images/trash.png') left center no-repeat;
- font-size: 0.6em;
  padding : 5px 0px 5px 20px;
  cursor: pointer;
 }
+
 
 #filenameList:hover {
   text-decoration : underline;
 }
 
-/**
- * Marker Window.
- */
-/*.turnpoints-popup, #turnpoint-config {
- -webkit-touch-callout: none;
- -webkit-user-select: none;
- -khtml-user-select: none;
- -moz-user-select: none;
- -ms-user-select: none;
- user-select: none;
+gm-panel li {
+  border: none;
 }
 
-#turnpoint-config input:focus,
-#turnpoint-config select:focus {
-  outline: none;
-}*/
-
-.form-button {
-  padding : 10px;
-  margin-top: 5px;
-  text-align : center;
-  color : #EEE;
-  cursor: pointer;
-  font-size: 1.2em;
-  font-weight: bold;
-  border-radius: 5px;
-  clear: both;
-}
-
-.add-task-turnpoint, .export-full-task {
-  background : repeating-linear-gradient(45deg, #088A08, #088A08 20px, #04B404 20px, #04B404 40px);
-}
-
-.edit-task-turnpoint, .edit-full-task {
-  background : repeating-linear-gradient(45deg, #DF7401, #DF7401 20px, #FF8000 20px, #FF8000 40px);
-}
-
-.delete-task-turnpoint, .delete-full-task {
-  background : repeating-linear-gradient(45deg, #DF0101, #DF0101 20px, #FF0000 20px, #FF0000 40px);
-}
-
-.form-button:hover {
-  text-decoration: underline;
-}
-
-/**
- * Overlay.
- */
-#overlay {
-  position: absolute;
-  width:100%;
-  height:100%;
-  background-color: #111;
-  opacity:0.8;
-  z-index: 10000000;
-  display: none;
-}
-
-/**
- * Tunrpoint configuration window.
- */
-#modal-window {
-  position: absolute;
-  overflow: auto;
-  z-index: 10000001;
-  width: 60%;
-  max-height: 90%;
-  left: 20%;
-  text-align: center;
-  top: 10px;
-  background-color: #FFF;
-  border-radius: 2px;
-  padding: 20px;
-  list-style-position : inside;
-  border : 1px solid #aaa;
-  box-sizing: border-box;
-}
-
-#modal-close {
-  height : 16px;
-  width : 16px;
-  float : right;
-  background : url('../images/close.png') center center no-repeat;
-  cursor : pointer;
-}
-
-#turnpoint-config {
-  text-transform: capitalize;
-}
-
-.tp-takeoff {
-  list-style-image: url("../images/turnpoint/takeoff.png");
-}
-
-.tp-start {
-  list-style-image: url("../images/turnpoint/start.png");
-}
-
-.tp-turnpoint {
-  list-style-image: url("../images/turnpoint/turnpoint.png");
-}
-
-.tp-end-of-speed-section {
-  list-style-image: url("../images/turnpoint/ess.png");
-}
-
-.tp-goal {
-  list-style-image: url("../images/turnpoint/goal.png");
-}
-
-#tp-radius {
-  list-style-image: url("../images/turnpoint/radius.png");
-}
-
-.tp-entry {
-  display: none;
-  list-style-image: url("../images/turnpoint/entry.png");
-}
-
-.tp-exit {
-  list-style-image: url("../images/turnpoint/exit.png");
-}
-
-#tp-open {
-  list-style-image: url("../images/turnpoint/open.png");
-}
-
-#tp-close {
-  list-style-image: url("../images/turnpoint/close.png");
-}
-
-.tp-cylinder {
-  list-style-image: url("../images/turnpoint/cylinder.png");
-}
-
-.tp-line, {
-  list-style-image: url("../images/turnpoint/line.png");
-}
 
 /**
  * Taskboard.
  */
 #taskboard {
   margin-top: 10px;
-  background-color: #555;
-  background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%), 
-  linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%);
+  min-height: 100px;
+  border : 1px solid #EEE;
+  border-radius: 2px;
+  background-color: #879279;
+  background-image: linear-gradient(45deg, #575F4E 25%, transparent 25%, transparent 75%, #575F4E 75%), 
+  linear-gradient(45deg, #575F4E 25%, transparent 25%, transparent 75%, #575F4E 75%);
   background-size:20px 20px;
   background-position: 0 0, 50px 50px;
-  min-height: 100px;
-  border-radius: 2px;
-  border : 1px solid #EEE;
+}
+
+#taskboard .label {
+  text-transform : uppercase;
+  margin-right : 10px;
 }
 
 #taskboard-header {
-  font-weight: bold;
-  text-shadow: 0px 0px 10px #DF7401;
+  font-weight: bolder;
+  color : #FFF;
+  text-shadow: 0px 0px 10px #000;
   font-style: italic;
   font-family: cursive;
-  font-size: 1.1em;
+  font-size: 1.2em;
   text-align: center;
+  margin-bottom : 10px;
 }
 
-#taskboard-content {
-  font-size: 0.6em;
+#taskboard-content ul {
+  padding-left : 5px;
 }
 
 #taskboard-content li {
   cursor: pointer;
+  list-style-image : none;
+  list-style-type : none;
+  text-shadow : 0px 0px 10px #000;
 }
 
 #taskboard-content li:hover {
@@ -277,200 +144,89 @@ select {
   margin-top: 10px;
   text-align: right;
   font-size: 1.5em;
+  text-shadow : 0px 0px 10px #000;
   font-style: italic;
   padding-right: 10px;
   font-weight: bold;
 }
 
 /**
- * FullBoard (Check Task).
+ * Fullboard
  */
 #full-board {
-  display : inline-block;
-  font-weight: bold;
-  text-align: right;
-  padding : 0px 5px 0px 20px;
-  float: right;
-  background: url('../images/arrow.png') left center no-repeat;
-  margin-top: 10px;
-  cursor: pointer;
-  visibility: hidden;
+  margin-top : 10px;
+  float : right;
 }
 
-#full-board:hover {
-  text-decoration: underline;
-}
-
-#task-config div {
-  display: inline-block;
-  padding: 10px;
-  color: #000;
-  border: 1px solid #ccc;
-  text-transform: uppercase;
-  text-align: left;
-  font-weight : bold;
-  box-sizing: border-box;
+#task-config .container-fluid {
+  border : 1px solid #CCC;
   margin : 10px 0px;
 }
 
-#task-config div span {
-  color: #111;
-  font-family: cursive;
-  font-size: 0.7em;
-  font-style: italic;
+#task-config .form-group {
+  padding-top : 10px; 
 }
 
-#task-config div.left {
-  float: left;
-  width: 60%;
+#task-config .tp-name {
+  font-size : 0.8em;
+} 
+
+#task-config i {
+  margin-right : 10px;
 }
 
-#task-config div.right {
-  float: right;
-  width: 39%;
+#task-config ol, #task-config ul {
+  padding-left : 15px;
 }
 
-#fullboard-type, #fullboard-takeoff, #fullboard-start {
-clear : both
-}
-
-div#fullboard-times, div#fullboard-right-infos {
-  border: none;
-  padding: 0px;
-}
-
-div#fullboard-times div {
-  display: block;
-  clear: both;
-  margin: 0px;
-}
-
-div#fullboard-right-infos div {
-  display: inline-block;
-  clear: both;
-  margin: 0px;
-  box-sizing: border-box;
-}
-
-div#fullboard-date {
-  width: 60%;
-}
-
-div#fullboard-window {
-  border-bottom-width: 1px;
-}
-
-div#fullboard-window span,
-div#fullboard-task-deadline li {
-  margin: 0 10px;
-}
-
-div#fullboard-task-deadline {
-  border-top-width: 1px;
-}
-
-div#fullboard-task-deadline li {
-  display : inline;
+#task-config ol li, #task-config ul li {
   list-style-type : none;
+  list-style-image : none;
 }
 
-
-div#fullboard-task-deadline li span{
-  font-family : cursive;
-  font-size: 0.8em;
-  font-style: italic;
-  font-weight: bold;
+#fullboard-arrow, #fullboard-turn-word {
+  text-align : center;
 }
 
-div#fullboard-turn {
-  border: 0px;
-  width: 30%;
+#fullboard-turnpoint ol {
+  counter-reset: item;
+  list-style-type: decimal;
 }
 
-div#fullboard-turn span#fullboard-turn-word {
-  font-size: 0.7em;
+#fullboard-turnpoint ol li:before {
+  content: 'B' counter(item, decimal) ' ';
+  counter-increment: item;
+  font-weight : bold;
 }
 
-div#fullboard-turn span {
-  text-align: center;
-  color: #FF0000;
-  margin: 0px 10px;
-  font-size: 1em;
-  margin: 0px;
+#fullboard-turnpoint ol li {
+  padding : 10px 0px;
 }
 
-div#fullboard-task span {
-  display: block;
-  text-transform: uppercase;
-  color: #000;
-  font: inherit;
-  margin: 10px 0px;
+#fullboard-turnpoint ol li:not(:last-child) {
+  border-bottom : 1px dashed #CCC;
 }
 
-div#fullboard-task span span {
-  display: inline;
+#fullboard-turnpoint span:first-of-type {
+  margin-left : 10px;
 }
 
-div#fullboard-task span span,
-#task-config li {
-  color :#111;
-  font-size: 0.8em;
-  font-weight: normal;
-  font-family: cursive;
-  font-style: italic;
+#task-config h5, #task-config label {
+  text-transform : uppercase;
 }
 
-#task-config span.baseInfo {
-  margin-right: 20px;
-  font-weight: bold;
-  font-size: 0.8em;
+#task-config h5 {
+  color : #ac2925;
 }
 
-#task-config ul {
-  padding: 0px;
+#fullboard-times .label {
+  margin-right : 5px;
 }
 
-#task-config .turnpoint {
-  cursor: pointer;
-}
-
-#task-config .turnpoint:hover {
-  text-decoration: underline;
-}
-
-#task-config span.tp-radius,
-#task-config span.tp-entry,
-#task-config span.tp-exit,
-#task-config span.tp-cylinder,
-#task-config span.tp-line {
-  padding-left: 20px;
-}
-
-#task-config span.tp-radius:after {
-  content: "M";
-}
-
-#task-config span.tp-radius {
-  background : url("../images/turnpoint/radius.png") center left no-repeat;
-}
-
-#task-config span.tp-entry {
-  background : url("../images/turnpoint/entry.png") center left no-repeat;
-}
-
-#task-config span.tp-exit {
-  background : url("../images/turnpoint/exit.png") center left no-repeat;
-}
-
-#task-config span.tp-line {
-  background : url("../images/turnpoint/line.png") center left no-repeat;
-}
-
-#task-config span.tp-cylinder {
-  background : url("../images/turnpoint/cylinder.png") center left no-repeat;
-}
-
+/**
+ * Xavier Murillo hommage.
+ */
 span#fullboard-xm {
   float: right;
-  font-size:0.4em;
+  font-size:0.2em;
 }
