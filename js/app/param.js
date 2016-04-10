@@ -21,7 +21,7 @@ define([], function() {
         turn : ['left', 'right'],
       },
       courseColor : {
-        fast : '#FF0000',
+        fast : '#204d74',
       },
       default : {
         date : day + '-' + date.getUTCMonth() + '-' + date.getUTCFullYear(),
@@ -80,18 +80,18 @@ define([], function() {
         }
       },
       strokeColor : {
-        takeoff : '#000000',
-        start : '#FF0000',
-        turnpoint : '#0000FF',
-        ess : '#00FF00',
-        goal : '#000000',
+        takeoff : '#204d74',
+        start : '#ac2925',
+        turnpoint : '#269abc',
+        'end-of-speed-section' : '#ac2925',
+        goal : '#398439',
       },
       fillColor : {
-        takeoff : '#000000',
-        start : '#FF0000',
-        turnpoint : '#0000FF',
-        ess : '#00FF00',
-        goal : '#000000',
+        takeoff : '#204d74',
+        start : '#ac2925',
+        turnpoint : '#269abc',
+        'end-of-speed-section' : '#ac2925',
+        goal : '#398439',
       },
     },
   };

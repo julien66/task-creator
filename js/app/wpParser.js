@@ -64,7 +64,7 @@ function($, waypoints, task, tracks, oziOld, ozi, cup, igc, tsk, gpx) {
     }
     
     if (fileInfo.task) {
-      parseInfo.task = fileInfo.task.turnpoints;
+      parseInfo.task = fileInfo.task;
     }
 
     return parseInfo;

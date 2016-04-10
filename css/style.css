@@ -17,8 +17,8 @@ html, body {
 }
 
 #sidebar {
- background-color: #111;
- color : #EEE;
+ background-color: #575F4E;
+ color : #FFF;
 }
 
 #sidebar-inner {
@@ -73,7 +73,7 @@ select {
  * Filename List.
  */
 #file-handler.populated {
-  background : repeating-linear-gradient(45deg, #DF7401, #DF7401 20px, #FF8000 20px, #FF8000 40px);
+  background : repeating-linear-gradient(45deg, #575F4E, #575F4E 20px, #879279 20px, #879279 40px);
   border: 1px solid #FFF;
   margin-top: 10px;
 }
@@ -83,6 +83,7 @@ select {
  padding : 5px 0px 5px 20px;
  cursor: pointer;
 }
+
 
 #filenameList:hover {
   text-decoration : underline;
@@ -98,25 +99,31 @@ gm-panel li {
  */
 #taskboard {
   margin-top: 10px;
-  background-color: #555;
-  background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%), 
-  linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%);
+  min-height: 100px;
+  border : 1px solid #EEE;
+  border-radius: 2px;
+  background-color: #879279;
+  background-image: linear-gradient(45deg, #575F4E 25%, transparent 25%, transparent 75%, #575F4E 75%), 
+  linear-gradient(45deg, #575F4E 25%, transparent 25%, transparent 75%, #575F4E 75%);
   background-size:20px 20px;
   background-position: 0 0, 50px 50px;
-  min-height: 100px;
-  border-radius: 2px;
-  border : 1px solid #EEE;
+}
+
+#taskboard .label {
+  text-transform : uppercase;
+  margin-right : 10px;
 }
 
 #taskboard-header {
-  font-weight: bold;
-  text-shadow: 0px 0px 10px #DF7401;
+  font-weight: bolder;
+  color : #FFF;
+  text-shadow: 0px 0px 10px #000;
   font-style: italic;
   font-family: cursive;
-  font-size: 1.1em;
+  font-size: 1.2em;
   text-align: center;
+  margin-bottom : 10px;
 }
-
 
 #taskboard-content ul {
   padding-left : 5px;
@@ -126,6 +133,7 @@ gm-panel li {
   cursor: pointer;
   list-style-image : none;
   list-style-type : none;
+  text-shadow : 0px 0px 10px #000;
 }
 
 #taskboard-content li:hover {
@@ -136,12 +144,89 @@ gm-panel li {
   margin-top: 10px;
   text-align: right;
   font-size: 1.5em;
+  text-shadow : 0px 0px 10px #000;
   font-style: italic;
   padding-right: 10px;
   font-weight: bold;
 }
 
+/**
+ * Fullboard
+ */
+#full-board {
+  margin-top : 10px;
+  float : right;
+}
+
+#task-config .container-fluid {
+  border : 1px solid #CCC;
+  margin : 10px 0px;
+}
+
+#task-config .form-group {
+  padding-top : 10px; 
+}
+
+#task-config .tp-name {
+  font-size : 0.8em;
+} 
+
+#task-config i {
+  margin-right : 10px;
+}
+
+#task-config ol, #task-config ul {
+  padding-left : 15px;
+}
+
+#task-config ol li, #task-config ul li {
+  list-style-type : none;
+  list-style-image : none;
+}
+
+#fullboard-arrow, #fullboard-turn-word {
+  text-align : center;
+}
+
+#fullboard-turnpoint ol {
+  counter-reset: item;
+  list-style-type: decimal;
+}
+
+#fullboard-turnpoint ol li:before {
+  content: 'B' counter(item, decimal) ' ';
+  counter-increment: item;
+  font-weight : bold;
+}
+
+#fullboard-turnpoint ol li {
+  padding : 10px 0px;
+}
+
+#fullboard-turnpoint ol li:not(:last-child) {
+  border-bottom : 1px dashed #CCC;
+}
+
+#fullboard-turnpoint span:first-of-type {
+  margin-left : 10px;
+}
+
+#task-config h5, #task-config label {
+  text-transform : uppercase;
+}
+
+#task-config h5 {
+  color : #ac2925;
+}
+
+#fullboard-times .label {
+  margin-right : 5px;
+}
+
+/**
+ * Xavier Murillo hommage.
+ */
 span#fullboard-xm {
   float: right;
-  font-size:0.4em;
+  font-size:0.2em;
 }

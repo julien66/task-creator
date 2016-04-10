@@ -16,14 +16,17 @@ define(['app/param', 'waypoints/waypoint'], function(param, Waypoint) {
     this.shortName = param.turnpoint.shortName[this.type];
     this.open = 0;
     this.close = 0;
+    this.fillColor = param.turnpoint.fillColor[this.type];
     this.goalType = param.turnpoint.default.goalType;
     this.mapElement = false;
+    
     this.setTurnpoint = function(turnpointInfo) {
       for (var element in turnpointInfo) {
         this[element] = turnpointInfo[element];
       }
       this.icon = param.turnpoint.icon[this.type];
       this.shortName = param.turnpoint.shortName[this.type];
+      this.fillColor = param.turnpoint.fillColor[this.type];
     }
 
     this.renderTurnpoint = function(google, map, turnpoints) {
@@ -32,7 +35,7 @@ define(['app/param', 'waypoints/waypoint'], function(param, Waypoint) {
           strokeColor: param.turnpoint.strokeColor[this.type],
           strokeOpacity: 0.8,
           strokeWeight: 2,
-          fillColor: param.turnpoint.fillColor[this.type],
+          fillColor: this.fillColor,
           fillOpacity: 0.35,
           map: map,
           center: this.latLng,
