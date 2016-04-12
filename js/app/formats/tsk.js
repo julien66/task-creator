@@ -19,16 +19,15 @@ define([], function() {
     var rtetp = xmlDoc.getElementsByTagName("rtept");
     var tps = [];
     var wps = [];
+    var array = ['close', 'goalType', 'index', 'mode', 'open', 'radius', 'type'];
+    
     for (var i = 0; i < rtetp.length; i++) {
-      var tp = {
-        close : rtetp[i].getElementsByTagName('close')[0].childNodes[0].nodeValue,
-        goalType : rtetp[i].getElementsByTagName('goalType')[0].childNodes[0].nodeValue,
-        index : rtetp[i].getElementsByTagName('index')[0].childNodes[0].nodeValue,
-        mode : rtetp[i].getElementsByTagName('mode')[0].childNodes[0].nodeValue,
-        open : rtetp[i].getElementsByTagName('open')[0].childNodes[0].nodeValue,
-        radius : rtetp[i].getElementsByTagName('radius')[0].childNodes[0].nodeValue,
-        type : rtetp[i].getElementsByTagName('type')[0].childNodes[0].nodeValue,
-      };
+      var tp = {};
+      for (var y = 0; y < array.length; y++) {
+        var e = array[y]
+        tp[e] =  rtetp[i].getElementsByTagName(e)[0].childNodes[0] ? rtetp[i].getElementsByTagName(e)[0].childNodes[0].nodeValue : 0;
+      }
+      
       if (tp.type == 'endofspeedsection') {
         tp.type = 'end-of-speed-section';
       } 
