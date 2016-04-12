@@ -50,7 +50,7 @@ define(['Dropzone', 'app/wpParser', 'jquery'], function(Dropzone, wpParser, $) {
 
   var myDz = new Dropzone("#uploader", {
     maxFiles : 1,
-    acceptedFiles : '.txt, .TXT, .wpt, .WPT, .igc, .IGC, .cup, .CUP, .tsk, .TSK',
+    acceptedFiles : '.txt, .TXT, .wpt, .WPT, .igc, .IGC, .cup, .CUP, .gpx, .GPX, .tsk, .TSK',
     dictDefaultMessage : "Drop files (or click) here",
   });
   

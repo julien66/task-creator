@@ -2,7 +2,7 @@
  * @file
  * Ozi parser module for the task creator.
  */
-define([], function() {
+define(["rejs!formats/export/gpx"], function(exportGpx) {
 
   /**
    * @todo
@@ -37,10 +37,11 @@ define([], function() {
     for (var i = 0; i < wpts.length; i++) {
       var tp = {
         filename : filename,
-        z : wpts[i].getElementsByTagName('ele')[0].childNodes[0].nodeValue,
-        name : wpts[i].getElementsByTagName('name')[0].childNodes[0].nodeValue,
+        id :  wpts[i].getElementsByTagName('name')[0].childNodes[0].nodeValue,
+        name : wpts[i].getElementsByTagName('desc')[0].childNodes[0].nodeValue,
         x : wpts[i].getAttribute('lat'),
         y : wpts[i].getAttribute('lon'),
+        z : wpts[i].getElementsByTagName('ele')[0].childNodes[0].nodeValue,
       }
       tps.push(tp);
     }
@@ -50,13 +51,20 @@ define([], function() {
     }
   }
 
+  var exporter = function(waypoints) {
+    var data = exportGpx({waypoints : waypoints});
+    return new Blob([data], {'type': "text/xml"});
+  }
+
   function ftToMeter(ft) {
     return Math.round(ft * 0.3048);
   }
 
   return {
-    'name' : 'GPX',
     'check' : check,
+    'exporter' : exporter,
+    'extension' : '.gpx',
+    'name' : 'GPX',
     'parse' : parse,
   }
 });

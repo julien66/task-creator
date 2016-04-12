@@ -72,10 +72,11 @@ select {
 /**
  * Filename List.
  */
-#file-handler.populated {
+#file-handler .populated {
   background : repeating-linear-gradient(45deg, #575F4E, #575F4E 20px, #879279 20px, #879279 40px);
   border: 1px solid #FFF;
   margin-top: 10px;
+  padding-left : 5px;
 }
 
 #filenameList {
@@ -89,6 +90,10 @@ select {
   text-decoration : underline;
 }
 
+#export-waypoints {
+  margin-bottom : 10px;
+}
+
 gm-panel li {
   border: none;
 }
@@ -98,6 +103,7 @@ gm-panel li {
  * Taskboard.
  */
 #taskboard {
+  clear : both;
   margin-top: 10px;
   min-height: 100px;
   border : 1px solid #EEE;
@@ -155,7 +161,6 @@ gm-panel li {
  */
 #full-board {
   margin-top : 10px;
-  float : right;
 }
 
 #task-config .container-fluid {
@@ -229,4 +234,11 @@ gm-panel li {
 span#fullboard-xm {
   float: right;
   font-size:0.2em;
+}
+
+/**
+ * Waypoints Exporter
+ */
+#waypoints-exporter label {
+  margin-right : 10px;
 }

@@ -17,12 +17,13 @@ function(param, geolocation, google, task, keyboard) {
   var mapOptions = {
     center: new google.maps.LatLng(startX, startY),
     zoom: 8,
-    mapTypeId: google.maps.MapTypeId.TERRAIN
+    mapTypeId: google.maps.MapTypeId.TERRAIN,
   };
 
   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
   var elevator = new google.maps.ElevationService();
-  
+  var geocoder = new google.maps.Geocoder;
+
   var onGeolocation = function(e) {
     var position = e.detail.geo;
     map.setCenter(new google.maps.LatLng(position.coords.latitude , position.coords.longitude));
@@ -32,9 +33,11 @@ function(param, geolocation, google, task, keyboard) {
     var waypoints = e.detail.waypoints;
     for (var i = 0; i < waypoints.length; i++) {
       var marker = waypoints[i].drawMarker(map, google);
-      markers.push(marker);   
+      markers.push(marker); 
     }
-    fitToBounds('markers', markers);
+    if (!e.detail.hasOwnProperty('customFile')) {
+      fitToBounds('markers', markers);
+    }
   }
 
   var onNewTrackFile = function(e) {
@@ -122,23 +125,27 @@ function(param, geolocation, google, task, keyboard) {
     new google.maps.event.trigger(mapElement.marker, 'click');
   }
 
-  google.maps.event.addListener(map, "rightclick", function(event) {
+  google.maps.event.addListener(map, "mousedown", function(e) {
     var keys = keyboard.getKeys();
     var space = keys[32] ? true : false;
     if (space) {
-      var lat = event.latLng.lat();
-      var lng = event.latLng.lng();
-      elevator.getElevationForLocations({'locations' : Array(event.latLng)}, function(results, status) {
-        var e = document.createEvent("CustomEvent");
-        e.initCustomEvent('newCustomWaypoint', false, false, {
-          param : {
-            filename : 'custom',
-            x : lat,
-            y : lng,
-            alt : results[0].elevation,
-          },
+      var lat = Math.round(e.latLng.lat()*100000 + 0.5) / 100000;
+      var lng = Math.round(e.latLng.lng()*100000 + 0.5) / 100000;
+      elevator.getElevationForLocations({'locations' : Array(e.latLng)}, function(results, status) {
+        var alt = results[0].elevation;
+        geocoder.geocode({'location': {lat, lng}}, function(results, status) { 
+          var ev = document.createEvent("CustomEvent");
+          ev.initCustomEvent('newCustomWaypoint', false, false, {
+            param : {
+              filename : 'custom',
+              name : results[1].address_components[0].short_name,
+              x : lat,
+              y : lng,
+              z : alt, 
+            },
+          });
+          document.dispatchEvent(ev);
         });
-        document.dispatchEvent(e);
       });
     }
   });

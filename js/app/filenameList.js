@@ -3,12 +3,20 @@
  * filename list module for the task creator.
  */
 define(['jquery'], function($) {
-  var container = $("#file-handler");
+  
+  var container = $("#file-handler ul");
   $(document).on('click', '#filenameList', function(e) { 
     var name = $(this).attr('class');
     var e = document.createEvent("CustomEvent");
     e.initCustomEvent('filenameRemoved', false, false, {
       filename : name, 
+    });
+    document.dispatchEvent(e);
+  });
+
+  $(document).on('click', '#export-waypoints', function(e) {
+    var e = document.createEvent("CustomEvent");
+    e.initCustomEvent('exportWaypoints', false, false, { 
     });
     document.dispatchEvent(e);
   });
@@ -21,9 +29,11 @@ define(['jquery'], function($) {
       }
       container.html(html);
       container.addClass('populated');
+      $("#export-waypoints").removeClass('hide');
     } else {
       container.removeClass('populated');
       container.html('');
+      $("#export-waypoints").addClass('hide');
     }
   }
 

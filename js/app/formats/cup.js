@@ -2,7 +2,8 @@
  * @file
  * CUP format for the task creator.
  */
-define([], function() {
+define(['rejs!formats/export/cup'], function(exportCup) {
+
   var check = function(text, filename) {
     var lines = text.split("\n");
     var words = [];
@@ -48,6 +49,34 @@ define([], function() {
     };
   }
 
+  var exporter = function(wps) {
+    for (var i = 0; i < wps.length; i++) {
+      wps[i].dms = convertDDtoDMS(wps[i].x, wps[i].y);
+    }
+
+    var data = exportCup({waypoints : wps});
+    return new Blob([data], {'type': "text/plain"});
+  }
+
+  function convertDDtoDMS(lat, lng) {
+    var convertLat = Math.abs(lat);
+    var LatDeg = Math.floor(convertLat);
+    var LatSec = (Math.round((convertLat - LatDeg) * 60 * 1000) / 1000);
+    var LatCardinal = ((lat > 0) ? "N" : "S");
+    var convertLng = Math.abs(lng);
+    var LngDeg = Math.floor(convertLng);
+    var LngSec = (Math.round((convertLng - LngDeg) * 60 * 1000) / 1000);
+    var LngCardinal = ((lng > 0) ? "E" : "W");
+                                                                              
+    return pad(LatDeg, 2) + pad(LatSec, 2) + LatCardinal + "," + pad(LngDeg, 3) + pad(LngSec, 2) + LngCardinal;
+  }
+
+  function pad(n, width, z) {
+    z = z || '0';
+    num = Math.floor(n) + '';
+    return num.length > width ? n : new Array(width - num.length + 1).join(z) + n;
+  }
+
   function elevation(data) {
     if (data.indexOf("m") > -1) {
       return Math.round(data.replace(/[^\d.]/g, ""));
@@ -75,13 +104,14 @@ define([], function() {
       var deg = coords.substring(0, 2); 
       var min = coords.substring(2, 8); 
     }
-    console.log(coords, deg, min, direction, convertDMSToDD(deg, min, direction));
     return convertDMSToDD(deg, min, direction);
   }
 
   return {
-    'name' : 'cup',
     'check' : check,
+    'exporter' : exporter,
+    'extension' : '.cup',
+    'name' : 'CUP',
     'parse' : parse,
   }
 });

@@ -1,0 +1,7 @@
+<% for(var i = 0;  i < waypoints.length; i++) { %>
+  <a class="form-group list-group-item" id="export-wp-format-<%- i %>" ref="#"> 
+    <input class="export-single-wp" rel="<%- i %>" type="checkbox" checked="checked">
+    <label for="export-single-wp" class="label label-default"><%- waypoints[i].id %></label>
+    <span class="text-primary"><%- waypoints[i].name %></span>
+  </a>
+<% } %>

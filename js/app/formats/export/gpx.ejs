@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" creator="Task Planner" version="1.1">
+  <% for (var i = 0; i < waypoints.length; i++) { %>
+      <wpt lat="<%- waypoints[i].x %>" lon="<%- waypoints[i].y %>">
+        <ele><%- waypoints[i].z %></ele>
+        <name><%- waypoints[i].id %></name>
+        <desc><%- waypoints[i].name %></desc>
+        <sym>Waypoint</sym>
+  <% } %>
+</gpx>

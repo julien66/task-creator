@@ -1,0 +1,27 @@
+<div id="waypoints-exporter" class="modal fade" role="dialog" aria-labelledby="wp-export">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="wp-export">Export Waypoints</h4>
+      </div>
+      <div class="modal-body">
+        <h5>Select waypoints to export :</h5>
+        <form action="#" autocomplete="off" id="export-wp-form">
+          <div class="form-group">
+            <div id="export-waypoints-list" class="list-group">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-group row" id="export-wp-format"> 
+              <label for="export-wp-format-select" class="col-md-6 form-control-label">Select a format</label>
+              <select id="export-wp-format-select" class="col-md-4" autocomplete="off" name="format"></select>
+            </div>
+          </div>
+        </form>
+      <div class="modal-footer">
+        <button type="button" id="export-wp" class="btn btn-success"> Export Waypoints</button>
+      </div>
+    </div>
+  </div>
+</div>

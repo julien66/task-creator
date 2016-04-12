@@ -2,7 +2,7 @@
  * @file
  * Ozi parser module for the task creator.
  */
-define([], function() {
+define(['rejs!formats/export/ozi'], function(exportOzi) {
 
   /**
    * @todo
@@ -50,14 +50,21 @@ define([], function() {
       'waypoints' : tps,
     };
   }
+  
+  var exporter = function(waypoints) {
+    var data = exportOzi({waypoints : waypoints});
+    return new Blob([data], {'type': "text/plain"});
+  }
 
   function ftToMeter(ft) {
     return Math.round(ft * 0.3048);
   }
 
   return {
-    'name' : 'OziExplorer',
     'check' : check,
+    'extension' : '.wpt',
+    'exporter' : exporter,
+    'name' : 'OziExplorer',
     'parse' : parse,
   }
 });

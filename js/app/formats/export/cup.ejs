@@ -1,0 +1,3 @@
+name,code,country,lat,lon,elev,style,rwdir,rwlen,freq,desc
+<% for (var i = 0; i < waypoints.length; i++) { %>"<%- waypoints[i].name %>",<%- waypoints[i].id %>,,<%- waypoints[i].dms %>,<%- waypoints[i].z %>.0m,1,,,,
+<% } %>
