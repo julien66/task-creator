@@ -100,13 +100,17 @@ function($, b, helper, param, turnpointTemplate) {
 
   
   var collectForm = function() {
+    var radius = !isNaN(parseInt($("#tp-radius-input").val())) ? parseInt($("#tp-radius-input").val()) : $("#tp-radius-input").attr('placeholder');
+    var open = $("#tp-open-input").val() ? $("#tp-open-input").val() : $("#tp-open-input").attr('placeholder');
+    var close = $("#tp-close-input").val() ? $("#tp-close-input").val() : $("#tp-close-input").attr('placeholder');
+    
     return {
-      close : $("#tp-close-input").val(),
+      close : close,
       goalType : $("#tp-goal-type-select").val(),
       index: $('#tp-index').val(),
       mode : $("#tp-mode-select").val(),
-      open : $("#tp-open-input").val(),
-      radius : parseInt($("#tp-radius-input").val()),
+      open : open, 
+      radius : radius,
       type : $("#tp-type-select").val(),
     } 
   }
