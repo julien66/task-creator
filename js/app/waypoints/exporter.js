@@ -18,7 +18,7 @@ function(ex, exWp, helper, gpx, ozi, cup) {
   $(document).on('click', '#export-wp', function(e) {
     var selected = Array();
     $('input.export-single-wp:checked').each(function() {
-      selected.push($(this).attr('rel'));
+      selected.push(parseInt($(this).attr('rel')));
     });
     var e = document.createEvent("CustomEvent");
     e.initCustomEvent('finalExportWaypoints', false, false, {

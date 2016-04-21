@@ -97,7 +97,7 @@ function(Waypoint, param, filenameList, waypointExporter) {
   
   var onFinalExportWaypoints = function(e) {
     var wps = $.grep(waypoints, function(n, i) {
-      return $.inArray(i, e.detail.selected) == -1;
+      return $.inArray(i, e.detail.selected) > -1;
     });
     waypointExporter.exporter(wps, e.detail.format);
   } 
