@@ -16,18 +16,18 @@ requirejs.config({
     async : "requirejs-plugins/src/async",
     bootstrap : "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min",
     css: "require-css/css",
-    Dropzone : "dropzone/downloads/dropzone-amd-module",
+    Dropzone : "dropzone/dist/dropzone-amd-module",
     ejs : 'ejs-0.8.3/ejs',
     formats : '../app/formats', 
     jquery : "jquery-1.11.1",
     'jquery-ui' : "jquery-ui-1.11.0.custom/jquery-ui",
-    rejs : 'requirejs-ejs/rejs',
+    rejs : 'requirejs-ejs-plugin/rejs',
     styles : "../../css",
     task : "../app/task",
     text : "text/text",
     tracks : "../app/tracks",
     waypoints : "../app/waypoints",
-    jgrowl : "jGrowl/jquery.jgrowl",
+    jgrowl : "jGrowl/jquery.jgrowl.min",
   },
   shim : {
     bootstrap : {
@@ -117,4 +117,4 @@ requirejs.onResourceLoad = function (context, map, depMaps) {
 /**
  * Finally load the main app module to start the app
  */
- requirejs(["app/main"]);
+requirejs(["app/main"]);

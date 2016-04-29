@@ -1,0 +1,27 @@
+{
+  "name": "task-creator",
+  "homepage": "https://github.com/julien66/task-creator",
+  "description": "A nice tool to create some tasks (races!) from a google map.",
+  "main": "",
+  "authors": [
+    "Julien Garcia"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "dropzone": "^4.3.0",
+    "jGrowl": "jgrowl#^1.4.5",
+    "ejs": "^1.0.0",
+    "requirejs-ejs-plugin": "whitcomb/requirejs-ejs",
+    "requirejs-plugins": "^1.0.3",
+    "text": "requirejs/text#^2.0.15"
+  }
+}
