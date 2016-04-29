@@ -1,0 +1,10 @@
+Here is a visual tool to create paragliding task from the browser using Google Map.
+
+It can :
+- Import waypoints from many format (.wpt, .cup, ozi, oldOzi, .gpx)
+- Create custom waypoints clicking directly on map (hold the space bar and press mouse).
+- Export waypoints back to any format.
+- Create task turnpoint from any waypoint.
+- Export a task to .tsk format.
+- Import a task from a .tsk format.
+- Read and show simple track from .IGC file.
