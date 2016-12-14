@@ -1,0 +1,42 @@
+{
+  "name": "task-creator",
+  "description": "Interactive task creator",
+  "main": "app.js",
+  "authors": [
+    "Julien Garcia"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "paragliding",
+    "task",
+    "google",
+    "map",
+    "gps"
+  ],
+  "homepage": "https://github.com/julien66/task-creator",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jGrowl": "jgrowl#^1.4.5",
+    "requirejs": "^2.3.2",
+    "font-awesome": "^4.7.0",
+    "jquery-ui": "^1.12.1",
+    "dropzone": "^4.3.0",
+    "requirejs-plugins": "https://github.com/millermedeiros/requirejs-plugins.git#^1.0.3",
+    "require-css": "^0.1.8",
+    "requirejs-ejs-plugin": "https://github.com/whitcomb/requirejs-ejs.git",
+    "ejs": "^1.0.0",
+    "text": "https://github.com/requirejs/text.git#^2.0.15"
+  },
+  "resolutions": {
+    "requirejs": "^2.3.2",
+    "ejs": "~0.8.3"
+  }
+}

@@ -43,7 +43,9 @@ function(ex, exWp, helper, gpx, ozi, cup) {
     var blob = format.exporter(wps);
     a.href = URL.createObjectURL(blob);
     a.download = "waypoints" + format.extension;
-    a.click();
+    var event = document.createEvent("MouseEvents");
+		event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		a.dispatchEvent(event);
   }
 
   return {

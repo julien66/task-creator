@@ -13,7 +13,9 @@ define(['rejs!task/export/gpx'], function(gpxTask) {
     var data = new Blob([gpx], {'type': "text/xml"});
     a.href = URL.createObjectURL(data);
     a.download = "task_" + taskInfo.date + ".tsk";
-    a.click();
+    var event = document.createEvent("MouseEvents");
+		event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		a.dispatchEvent(event);
   }
 
   return {

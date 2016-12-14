@@ -1,0 +1,14 @@
+{
+  "name": "requirejs-text",
+  "homepage": "https://github.com/requirejs/text",
+  "version": "2.0.4",
+  "_release": "2.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.4",
+    "commit": "e5b850a79ed5a33905aa8e8b1d0164b29ff7d8cb"
+  },
+  "_source": "https://github.com/requirejs/text.git",
+  "_target": "2.0.4",
+  "_originalSource": "requirejs-text"
+}

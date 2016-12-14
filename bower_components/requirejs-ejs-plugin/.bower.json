@@ -1,0 +1,19 @@
+{
+  "name": "requirejs-ejs-plugin",
+  "dependencies": {
+    "requirejs": "2.1.5",
+    "requirejs-text": "2.0.4",
+    "ejs": "~0.8.3"
+  },
+  "homepage": "https://github.com/whitcomb/requirejs-ejs",
+  "_release": "9fb1e2fa09",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "9fb1e2fa09edbed19b24714b6ca82e366b4ea07e"
+  },
+  "_source": "https://github.com/whitcomb/requirejs-ejs.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/whitcomb/requirejs-ejs.git",
+  "_direct": true
+}

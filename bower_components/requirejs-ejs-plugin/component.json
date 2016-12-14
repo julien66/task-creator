@@ -1,0 +1,9 @@
+{
+  "name": "requirejs-ejs-plugin",
+  "version": "0.0.3",
+  "dependencies": {
+    "requirejs": "2.1.5",
+    "requirejs-text": "2.0.4",
+    "ejs": "~0.8.3"
+  }
+}
