@@ -9,7 +9,7 @@
  * Configuration settings for requirejs.
  */
 requirejs.config({
-  baseUrl : "scripts",
+  baseUrl : "bower_components",
   urlArgs: "bust=" + (new Date()).getTime(),
   paths : {
     app : "../js/app",
