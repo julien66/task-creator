@@ -3,6 +3,9 @@
     <span class="tp-id label label-default"><%- turnpoint.id %></span> 
     <span class="tp-name"><%- turnpoint.name %></span>
     <span class="tp-radius label label-info"><%- turnpoint.radius %>m</span>
+    <% if (taskInfo.distances[turnpoint.index - 1]) { %>
+      <span class="tp-distance label label-default"><%- taskInfo.distances[turnpoint.index - 1] %> Km</span>
+    <% } %>
   </li>
 <% } %>
 
@@ -12,6 +15,9 @@
     <span class="tp-name"><%- turnpoint.name %></span>
     <span class="tp-<%- turnpoint.mode %> label label-warning"><%- turnpoint.mode %></span>
     <span class="tp-radius label label-info"><%- turnpoint.radius %>m</span>
+    <% if (taskInfo.distances[turnpoint.index - 1]) { %>
+      <span class="tp-distance label label-default"><%- taskInfo.distances[turnpoint.index - 1] %> Km</span>
+    <% } %>
   </li>
 <% } %>
 
@@ -20,6 +26,9 @@
     <span class="tp-id label label-default"><%- turnpoint.id %></span>
     <span class="tp-name"><%- turnpoint.name %></span>
     <span class="tp-radius label label-info"><%- turnpoint.radius %>m</span>
+    <% if (taskInfo.distances[turnpoint.index - 1]) { %>
+      <span class="tp-distance label label-default"><%- taskInfo.distances[turnpoint.index - 1] %> Km</span>
+    <% } %>
   </li>
 <% } %>
 
@@ -29,6 +38,9 @@
     <span class="tp-name"><%- turnpoint.name %></span>
     <span class="tp-<%- turnpoint.mode %> label label-warning"><%- turnpoint.mode %></span>
     <span class="tp-radius label label-info"><%- turnpoint.radius %>m</span>
+    <% if (taskInfo.distances[turnpoint.index - 1]) { %>
+      <span class="tp-distance label label-default"><%- taskInfo.distances[turnpoint.index - 1] %> Km</span>
+    <% } %>
   </li>
 <% } %>
 
@@ -39,6 +51,9 @@
     <span class="tp-<%- turnpoint.goalType %> label label-warning"><%- turnpoint.goalType %></span>
     <% if (turnpoint.goalType != 'line') { %>
       <span class="tp-radius label label-info"><%- turnpoint.radius %>m</span>
+    <% } %>
+    <% if (taskInfo.distances[turnpoint.index - 1]) { %>
+      <span class="tp-distance label label-default"><%- taskInfo.distances[turnpoint.index - 1] %> Km</span>
     <% } %>
   </li>
 <% } %>

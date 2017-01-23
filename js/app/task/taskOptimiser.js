@@ -7,11 +7,13 @@ define(["app/param"], function(param) {
   var fastTrack; 
   var fastWaypoints = Array();
   var fastDistance = 0;
+  var distances = [];
 
   var optimize = function(google, map, turnpoints) {
     var headings = Array();
     fastWaypoints = Array();
     fastDistance = 0;
+    distances = [];
 
     for (var i = 0; i < turnpoints.length; i++) {
       // For all turnpoint excpet the last one.
@@ -87,7 +89,10 @@ define(["app/param"], function(param) {
       map: map,
     });
     
-    return fastDistance;
+    return { 
+      distance : fastDistance,
+      distances : distances,
+     }
   }
 
   function incrementDistance(google, waypoints) {
@@ -97,6 +102,7 @@ define(["app/param"], function(param) {
         waypoints[fastWaypoints.length - 2]
       );
       fastDistance += distance;
+      distances.push(Math.round(distance / 10)/100);
     }
   }
 

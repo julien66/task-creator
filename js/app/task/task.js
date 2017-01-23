@@ -110,7 +110,9 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
   }
 
   var drawCourse = function(google, map) {
-    taskInfo.distance = optimizer.optimize(google, map, turnpoints);
+    var opti =  optimizer.optimize(google, map, turnpoints);
+    taskInfo.distance = opti.distance;
+    taskInfo.distances = opti.distances;
     taskBoard.rebuildTask(turnpoints, taskInfo);
   }
 

@@ -77,7 +77,10 @@ function($, helper, param, turnpointTemplate, fullTemplate) {
 
     for (var i = 0; i < turnpoints.length; i++) {
       var type = turnpoints[i].type;
-      $("#fullboard-" + type + " ol").append(turnpointTemplate({turnpoint : turnpoints[i]}));
+      $("#fullboard-" + type + " ol").append(turnpointTemplate({
+        turnpoint : turnpoints[i],
+        taskInfo : taskInfo
+      }));
       if (type == 'end-of-speed-section' || type == 'goal' || type == 'takeoff' || type == 'start' ) {
         $("#fullboard-" + type + "-close").html(turnpoints[i].close);
         $("#fullboard-" + type + "-open").html(turnpoints[i].open);
