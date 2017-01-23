@@ -1,4 +1,4 @@
-Here is a visual tool to create paragliding task from the browser using Google Map.
+Here is a visual Google Map utility to create paragliding task from the browser.
 
 It can :
 - Import waypoints from many format (.wpt, .cup, ozi, oldOzi, .gpx)
@@ -8,3 +8,8 @@ It can :
 - Export a task to .tsk format.
 - Import a task from a .tsk format.
 - Read and show simple track from .IGC file.
+
+Installation :
+1) Clone this repo wherever you find it usefull.
+2) The file js/app/gMap.js.example need your own Google Map API key.
+3) Rename gMap.js.example to gMap.js

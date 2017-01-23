@@ -1,0 +1,7 @@
+/**
+ * @file
+ * google maps module for the task creator.
+ */
+define(['async!https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAP_API_KEY_GOES_HERE&libraries=geometry'], function() {
+  return google;
+});
