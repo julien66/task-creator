@@ -102,6 +102,25 @@ function(Waypoint, param, filenameList, waypointExporter) {
     waypointExporter.exporter(wps, e.detail.format);
   } 
 
+  var onEditWaypoint = function(e) {
+    for (var i = 0; i < waypoints.length; i++) {
+      if (waypoints[i].index == e.detail.wpindex ) {
+        waypoints[i].set(e.detail.name, e.detail.id);
+        waypoints[i].marker.map.infoWindow.close();
+      }
+    }
+  }
+
+  var alreadyHave = function(infos) {
+    for (var i = 0; i < waypoints.length; i++) {
+      if (waypoints[i].x == infos.x && waypoints[i].y == infos.y )  {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  document.addEventListener('editWaypoint', onEditWaypoint);
   document.addEventListener('filenameRemoved', onFilenameRemoved);
   document.addEventListener('configureWaypoint', onWaypointConfigure);
   document.addEventListener('newCustomWaypoint', onNewCustomWaypoint);
@@ -109,11 +128,13 @@ function(Waypoint, param, filenameList, waypointExporter) {
   document.addEventListener('finalExportWaypoints', onFinalExportWaypoints);
   
   return {
-    getWaypoints : getWaypoints,
+    
+    addFilename : addFilename,
     addWaypoint : addWaypoint,
+    alreadyHave : alreadyHave,
     clearPastFile: clearPastFile,
     checkFilename : checkFilename,
-    addFilename : addFilename,
-    getWaypointpByFileAndId : getWaypointByFileAndId,
+    getWaypoints : getWaypoints,
+    getWaypointByFileAndId : getWaypointByFileAndId,
   }
 })

@@ -111,13 +111,13 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
 
   var drawCourse = function(google, map) {
     var opti =  optimizer.optimize(google, map, turnpoints);
-    taskInfo.distance = opti.distance;
-    taskInfo.distances = opti.distances;
+    for (var e in opti) { taskInfo[e] = opti[e]; }
     taskBoard.rebuildTask(turnpoints, taskInfo);
   }
 
   var onTaskExport = function(e) {
-    taskExporter.gpxExport(turnpoints, taskInfo);
+    $('#task-config').modal('hide');
+    taskExporter.build();
   }
 
   var onNewTask = function(e) {
@@ -125,12 +125,16 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
     var tps = e.detail.task.turnpoints;
     taskInfo = e.detail.task;
     taskInfo.turn =  taskInfo.date.substr(0, 2) % 2 == 0 ? "Right" : "Left";
-    if (waypoints) {
-      for (var i = 0; i < waypoints.length; i++) {
-        addTurnpoint(waypoints[i], tps[i]);
+    if (tps) {
+      for (var i = 0; i < tps.length; i++) {
+        addTurnpoint(tps[i].waypoint, tps[i]);
       }
     }
   }
+
+  var onFinalExportTask = function(e) {
+    taskExporter.exporter(turnpoints, taskInfo, e.detail.format);
+  } 
 
   //document.addEventListener('filenameRemoved', onTaskDelete);
   document.addEventListener('addTurnpoint', onAddTurnpoint);
@@ -142,6 +146,7 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
   document.addEventListener('editTask', onTaskEdit);
   document.addEventListener('deleteTask', onTaskDelete);
   document.addEventListener('exportTask', onTaskExport);
+  document.addEventListener('finalExportTask', onFinalExportTask);
   document.addEventListener('newTask', onNewTask);
 
   return {

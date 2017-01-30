@@ -237,6 +237,10 @@ gm-panel li {
   color : #ac2925;
 }
 
+#fullboard-content span.tp-id {
+  cursor : pointer;
+} 
+
 #fullboard-times .label {
   margin-right : 5px;
 }

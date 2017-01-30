@@ -28,8 +28,10 @@ function($, waypoints, task, tracks, oziOld, ozi, cup, igc, tsk, gpx) {
       var l = waypointsInfos.length;
       var waypointsArray = Array();
       for (var i = 0; i < l; i++) {
-        var waypoint = waypoints.addWaypoint(waypointsInfos[i]);
-        waypointsArray.push(waypoint);
+        if (!waypoints.alreadyHave(waypointsInfos[i])) {
+          var waypoint = waypoints.addWaypoint(waypointsInfos[i]);
+          waypointsArray.push(waypoint);
+        }
       }
 
       if (l > 0) { 
@@ -65,9 +67,15 @@ function($, waypoints, task, tracks, oziOld, ozi, cup, igc, tsk, gpx) {
     
     if (fileInfo.task) {
       parseInfo.task = fileInfo.task;
+      if (parseInfo.task.turnpoints.length > 0) {
+        for (var i = 0; i < parseInfo.task.turnpoints.length; i++ ) {
+          var tp = parseInfo.task.turnpoints[i];
+          var waypoint = waypoints.getWaypointByFileAndId(tp.wp.filename , tp.wp.id);
+          tp.waypoint = waypoint;
+        }
+        return parseInfo;
+      }
     }
-
-    return parseInfo;
   }
 
   var formatCheck = function(text, filename) {

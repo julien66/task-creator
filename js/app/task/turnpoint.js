@@ -29,6 +29,38 @@ define(['app/param', 'waypoints/waypoint'], function(param, Waypoint) {
       this.fillColor = param.turnpoint.fillColor[this.type];
     }
 
+    this.generateKML = function() {
+      var output = "";
+      var d2r = Math.PI / 180;   // degrees to radians 
+      var r2d = 180 / Math.PI;   // radians to degrees 
+      var earthsradius = 6378137; // 6378137 is the radius of the earth in meters
+      var dir = 1; // clockwise
+
+      var points = 64; 
+
+      // find the raidus in lat/lon 
+      var rlat = (this.radius / earthsradius) * r2d; 
+      var rlng = rlat / Math.cos(this.latLng.lat() * d2r); 
+
+      var extp = new Array(); 
+      if (dir == 1)   {
+        var start = 0;
+        var end = points + 1
+      } // one extra here makes sure we connect the line
+      else {
+        var start = points + 1;
+        var end = 0
+      }
+      
+      for (var j = start; (dir == 1 ? j < end : j > end); j = j + dir) { 
+        var theta = Math.PI * (j / (points / 2)); 
+        ey = this.latLng.lng() + (rlng * Math.cos(theta)); // center a + radius x * cos(theta) 
+        ex = this.latLng.lat() + (rlat * Math.sin(theta)); // center b + radius y * sin(theta) 
+        output += ( ey + "," + ex + ",0 " );
+      } 
+      return output;
+    }
+
     this.renderTurnpoint = function(google, map, turnpoints) {
       if (this.type != 'goal' || this.goalType != 'line') {
         var circleOptions = {

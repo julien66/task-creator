@@ -14,12 +14,18 @@ function(param, turnpointConfig, markerWindow) {
     this.z = parseInt(info.z, 10);
     this.name = info.name;
     this.id = info.id ? info.id : info.filename + i;
+    this.index = i;
     this.drawnOnMap = info.drawnOnMap || false;
     this.marker = info.marker || false;
     this.latLng = info.latLng || false;
     //var markerColor = param.color; 
     this.getConfigurationForm = function(mode) {
       return turnpointConfig.buildForm(mode, this);
+    }
+
+    this.set = function(name, id) {
+        this.id = id;
+        this.name = name;
     }
 
     this.buildWindowMarker = function() {

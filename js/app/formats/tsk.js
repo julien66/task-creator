@@ -2,7 +2,7 @@
   @file
   Task importer for the task creator.
   **/
-define([], function() {
+define(['rejs!formats/export/tsk'], function(exportTSK) {
   var check = function(text, filename) {
     if (filename.split('.').pop() == 'tsk') {
       return true;
@@ -41,6 +41,7 @@ define([], function() {
         z : rtetp[i].getElementsByTagName('z')[0].childNodes[0].nodeValue,
       }
       wps.push(wp);
+      tp.wp = wp;
       tps.push(tp);
     } 
 
@@ -55,9 +56,19 @@ define([], function() {
     }
   }
   
+  var exporter = function(turnpoints, taskInfo) {
+    var data = exportTSK({
+      turnpoints : turnpoints,
+      taskInfo : taskInfo
+    });
+    return new Blob([data], {'type': "text/xml"});
+  }
+
   return {
-    'name' : 'Task - tsk',
     'check' : check,
+    'exporter' : exporter,
+    'extension' : '.tsk',
+    'name' : 'TSK',
     'parse' : parse,
   }
 });

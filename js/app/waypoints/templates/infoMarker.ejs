@@ -1,7 +1,13 @@
-<div class="panel panel-default gm-panel">
-  <div class="panel-heading"><%- info.name %></div>
+<div id="infoMarker" class="panel panel-default gm-panel">
+  <div class="panel-heading">
+    <span class="label label-default">Name</span>
+    <input id="wp-name" class="wp-edit form-control" type="text" value="<%- info.name %>">
+  </div>
     <ul class="list-group">
-      <li class="list-group-item id"> <span class="label label-default">Id</span>  <%- info.id %></li>
+      <li class="list-group-item id"> 
+        <span class="label label-default">Id</span>
+        <input id="wp-id" class="wp-edit form-control" inputType="id" type="text" value="<%- info.id %>">
+      </li>
       <li class="list-group-item altitude"> <span class="label label-default">Altitude</span>  <%- altitude %> m</li>
       <li class="list-group-item lat"> <span class="label label-default">Latitude</span>  <%- info.x %></li>
       <li class="list-group-item lon"> <span class="label label-default">Longitude</span>  <%- info.y %></li>
@@ -10,5 +16,8 @@
   </div>
   <button id="configure-turnpoint" filename="<%- info.filename %>" tid="<%- info.id %>" class="btn btn-success" type="button" data-toggle="modal" data-target="#turnpoint-config">
     Add To Task
+  </button>
+  <button id="edit-waypoint" wp-index="<%- info.index %>" class="btn btn-danger" type="button">
+    Edit Turnpoint
   </button>
 </div>

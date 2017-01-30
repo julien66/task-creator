@@ -92,6 +92,7 @@ define(["app/param"], function(param) {
     return { 
       distance : fastDistance,
       distances : distances,
+      fastWaypoints : fastWaypoints,
      }
   }
 

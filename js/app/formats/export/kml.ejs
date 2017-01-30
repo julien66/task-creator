@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+  <Document>
+    <Folder>
+      <name>T<% taskInfo.num %> <% taskInfo.date %></name>
+      <Style id="wpStyle">
+        <LineStyle>
+          <color>7fff5500</color>
+        </LineStyle>
+        <PolyStyle>
+          <color>66ffaa00</color>
+        </PolyStyle>
+      </Style>
+      <Style id="rtStyle">
+        <LineStyle>
+          <color>7fff0000</color>
+          <width>2</width>
+        </LineStyle>
+      </Style>
+      <Folder>
+        <name>Cylinders</name>
+          <% for (var i = 0; i < turnpoints.length; i++) { %>
+            <Placemark>
+              <name><%- turnpoints[i].index %> <%-turnpoints[i].type %> - <%- turnpoints[i].name %></name>
+              <styleUrl>#rtStyle</styleUrl>
+              <visibility>0</visibility>
+              <LineString>
+                <altitudeMode>clampToGround</altitudeMode>
+                <tessellate>1</tessellate>
+                <coordinates><%- turnpoints[i].generateKML() %></coordinates>
+              </LineString>
+            </Placemark>
+            <Placemark>
+              <name><%- turnpoints[i].index %> <%-turnpoints[i].type %> - <%- turnpoints[i].name %></name>
+              <styleUrl>#wpStyle</styleUrl>
+              <LineString>
+                <altitudeMode>absolute</altitudeMode>
+                <extrude>1</extrude>
+                <coordinates></coordinates>
+              </LineString>
+            </Placemark>
+          <% } %>
+        </Folder>
+        <Folder>
+          <name>Route</name>
+          <% for (var i = 0; i < turnpoints.length; i++) { %>
+            <% if (i > 0) { %>
+              <Placemark>
+                <name>From <%- turnpoints[i].index - 1 +'- '+ turnpoints[i-1].name + " To " + turnpoints[i].index + '- ' + turnpoints[i].name %> (<%- taskInfo.distances[i - 1] %>Km)</name>
+                <styleUrl>#rtStyle</styleUrl>
+                <LineString>
+                  <altitudeMode>clampToGround</altitudeMode>
+                  <tessellate>1</tessellate>
+                  <coordinates> <%- fastWaypoints[i-1] + ' ' + fastWaypoints[i] %></coordinates> 
+                </LineString>
+              </Placemark>
+            <% } %> 
+          <% } %>
+        </Folder>
+    </Folder>
+  </Document>
+</kml>
