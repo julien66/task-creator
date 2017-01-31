@@ -73,9 +73,9 @@ function($, waypoints, task, tracks, oziOld, ozi, cup, igc, tsk, gpx) {
           var waypoint = waypoints.getWaypointByFileAndId(tp.wp.filename , tp.wp.id);
           tp.waypoint = waypoint;
         }
-        return parseInfo;
       }
     }
+    return parseInfo;
   }
 
   var formatCheck = function(text, filename) {
