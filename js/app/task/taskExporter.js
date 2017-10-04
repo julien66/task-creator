@@ -2,17 +2,15 @@
  * @file
  * Task Exporter module for the task creator.
  */
-define(['rejs!task/templates/export', 'app/helper', 'formats/tsk', 'formats/kml'], function(taskE, helper, tsk, kml) {
-  var formats = [tsk, kml];
+define(['jquery', 'rejs!task/templates/export', 'app/helper', 'formats/tsk', 'formats/kml', 'formats/xctrack'], function($, taskE, helper, tsk, kml, xctrack) {
+  var formats = [xctrack, kml, tsk];
   
   var template = taskE({});
   $("body").append(template);
   
   
   var build = function() {
-    console.log(tsk);
     var format = helper.formatOptions(formats.map(function(a) {return a.name;}));
-    console.log(format);
     $("#export-task-format-select").html(format);
     $("#task-exporter").modal();
   }

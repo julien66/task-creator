@@ -70,7 +70,6 @@ define([], function() {
       var deg = coords.substring(0, 2); 
       var min = coords.substring(2, 4) + '.' + coords.substring(4, 7); 
     }
-    console.log(coords, deg, min, direction, convertDMSToDD(deg, min, direction));
     return convertDMSToDD(deg, min, direction);
   }
 

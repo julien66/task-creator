@@ -5,6 +5,8 @@
  * Load the main.js entry point.
  */
 
+
+
 /**
  * Configuration settings for requirejs.
  */
@@ -59,6 +61,7 @@ requirejs.config({
 requirejs.onResourceLoad = function (context, map, depMaps) {
   if (!window.rtree) {
     window.rtree = {
+      urls : [],
       tree: {},
       map: function() {
         for (var key in this.tree) {
@@ -70,6 +73,7 @@ requirejs.onResourceLoad = function (context, map, depMaps) {
             }
           }
         }
+        return this.tree
       },
       toUml: function() {
         var uml = [];
@@ -111,7 +115,8 @@ requirejs.onResourceLoad = function (context, map, depMaps) {
     if (map.parentMap.name !== map.name) {
       tree[map.parentMap.name].deps.push(map.name);
     }
-  }*/  
+  }*/
+  window.rtree.urls.push(map.url);
 };
 
 /**

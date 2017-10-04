@@ -1,0 +1,26 @@
+{
+  "taskType" : "CLASSIC",
+  "version" : 1,
+  "turnpoints" : [<% for (var i = 0; i < turnpoints.length; i++ ) { %>{
+       "radius" : <%- turnpoints[i].radius %>.0,
+       "waypoint" : {
+         "lon" : <%- turnpoints[i].y %>,
+         "lat" : <%- turnpoints[i].x %>,
+         "altSmoothed" : <%- turnpoints[i].z %>.0,
+         "name" : "<%-turnpoints[i].name %>",
+         "description" : "<%- turnpoints[i].id %>",
+         "isUnknown" : true
+       },
+       "type" : "<%- turnpoints[i].type %>"
+     }<% if (i < turnpoints.length - 1) { %>,<% } %><% } %>
+  ],
+  "sss" : {
+    "type" : "<%- xcInfo.type %>",
+    "direction" : "<%- xcInfo.direction %>",
+    "timeGates" : ["<%- xcInfo.timeGates %>Z"]
+  },  
+  "goal" : {
+    "type" : "<%- xcInfo.goalType %>",
+    "deadline" : "<%- xcInfo.deadline %>Z"
+  }
+}

@@ -61,7 +61,12 @@ define(["app/param"], function(param) {
         var newPoint = turnpoints[i - 1].latLng;
       }
       else {
-        var newPoint = google.maps.geometry.spherical.computeOffset(turnpoints[i - 1].latLng, turnpoints[i - 1].radius, headings[headings.length - 1] - 180);
+        if (turnpoints[i-2].latLng.equals(turnpoints[i-1].latLng)) {
+          var newPoint = google.maps.geometry.spherical.computeOffset(turnpoints[i - 1].latLng, turnpoints[i - 1].radius, headings[headings.length - 2] - 180);
+        }
+        else {
+          var newPoint = google.maps.geometry.spherical.computeOffset(turnpoints[i - 1].latLng, turnpoints[i - 1].radius, headings[headings.length - 1] - 180);
+        }
       }
 
       fastWaypoints.push(newPoint);
