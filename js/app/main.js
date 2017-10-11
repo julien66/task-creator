@@ -8,6 +8,8 @@ define(['app/map', 'app/uploader', 'jquery'], function(map, uploader, $) {
   var waypointsUrl = location.search.split('waypointsUrl=')[1];
   // Task Url
   var taskUrl = location.search.split('taskUrl=')[1];
+  // Task Id
+  var taskId = location.search.split('taskId=')[1]
   // Hide sidebar.
   if (location.search.split('hideSidebar=true')[1]) {
     $("#sidebar").hide();
@@ -35,8 +37,17 @@ define(['app/map', 'app/uploader', 'jquery'], function(map, uploader, $) {
     });
   }
 
+  if (taskId) { 
+    var id = taskId.split("/").pop();
+    $.get("https://pole.ffvl.fr/tasks/" + id, function(data) {
+     var geo = data[0].data;
+     uploader.setFilename( id + '.geojson');
+     uploader.parse(JSON.stringify(geo));
+    });
+  }
+  
   /** @todo
    * Enable variable that directly display a given task
    */
-
+  
 });

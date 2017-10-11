@@ -11,6 +11,8 @@ function(param, geolocation, google, task, keyboard) {
   var polylines = [];
   var turnpointElements = [];
 
+  var once = true;
+
   var markerWindow;
   var zoomBeforeBounds;
 
@@ -18,6 +20,9 @@ function(param, geolocation, google, task, keyboard) {
     center: new google.maps.LatLng(startX, startY),
     zoom: 8,
     mapTypeId: google.maps.MapTypeId.TERRAIN,
+    styles : [
+       {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},    
+    ],
   };
 
   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
@@ -70,6 +75,7 @@ function(param, geolocation, google, task, keyboard) {
         map.setZoom(zoomBeforeBounds);
       }
     }
+    task.setBbox(bounds);
   }
 
   var onClearWaypointFile = function(e) {
@@ -128,7 +134,8 @@ function(param, geolocation, google, task, keyboard) {
   google.maps.event.addListener(map, "mousedown", function(e) {
     var keys = keyboard.getKeys();
     var space = keys[32] ? true : false;
-    if (space) {
+    if (space && once) {
+      once = false;
       var lat = Math.round(e.latLng.lat()*100000 + 0.5) / 100000;
       var lng = Math.round(e.latLng.lng()*100000 + 0.5) / 100000;
       elevator.getElevationForLocations({'locations' : Array(e.latLng)}, function(results, status) {
@@ -145,6 +152,7 @@ function(param, geolocation, google, task, keyboard) {
             },
           });
           document.dispatchEvent(ev);
+          once = true;
         });
       });
     }

@@ -23,6 +23,7 @@ requirejs.config({
     formats : '../js/app/formats', 
     jquery : "jquery/dist/jquery",
     'jquery-ui' : "../js/lib/jquery-ui-1.11.0.custom/jquery-ui",
+    'jquery-qrcode' : "jquery-qrcode/jquery.qrcode.min",
     rejs : 'requirejs-ejs-plugin/rejs',
     styles : "../../css",
     task : "../js/app/task",

@@ -29,6 +29,7 @@ define([], function() {
         type : 'race',
         turn : turn,
         distance : 0,
+        bbox : false,
       }
     },
     turnpoint : {

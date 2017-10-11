@@ -26,6 +26,8 @@ function(param, turnpointConfig, markerWindow) {
     this.set = function(name, id) {
         this.id = id;
         this.name = name;
+        this.marker.label.text = id;
+        this.marker.setLabel(this.marker.label);
     }
 
     this.buildWindowMarker = function() {
@@ -40,6 +42,22 @@ function(param, turnpointConfig, markerWindow) {
       this.drawnOnMap = true;
       this.latLng = new google.maps.LatLng(this.x, this.y);
       this.marker = new google.maps.Marker({
+        label: {
+          text : this.id,
+          color : "#000",
+          fontSize: "11px",
+          fontWeight: "bold",
+          'text-shadow': "0px 0px 10px #000",
+        },
+        icon : {
+          path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z M -2,-30 a 2,2 0 1,1 4,0 2,2 0 1,1 -4,0',
+          fillColor: "#FE7569",
+          fillOpacity: 1,
+          strokeColor: '#CB4236',
+          strokeWeight: 1,
+          scale: 1,
+          labelOrigin : new google.maps.Point(0, 10),
+        },
         position: this.latLng,
         map: map,
         waypoint : this,

@@ -44,6 +44,12 @@ function($, helper, param, turnpointTemplate, fullTemplate) {
     document.dispatchEvent(e);
   });
   
+  $(document).on('click', '#save-task', function(e) {
+    var e = document.createEvent("customEvent");
+    e.initCustomEvent('saveTask', false, false, {});
+    document.dispatchEvent(e);
+  });
+
   $(document).on('click', '#task-config .turnpoint', function(e) {
     var index = $(this).attr('index');
     var e = document.createEvent("CustomEvent");

@@ -6,6 +6,7 @@ define(['task/taskBoard', 'task/turnpoint', 'task/fullBoard', 'app/param', 'task
 function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExporter) {
   var turnpoints = [];
   var taskInfo = param.task.default;
+  taskInfo.id = 0;
 
   var addTurnpoint = function(waypoint, turnpointInfo) {
     var turnpoint = new Turnpoint(waypoint);
@@ -117,7 +118,12 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
 
   var onTaskExport = function(e) {
     $('#task-config').modal('hide');
-    taskExporter.build();
+    taskExporter.build(turnpoints, taskInfo);
+  }
+
+  var onTaskSave = function(geocoder, google) {
+    $('#task-config').modal('hide');
+    taskExporter.save(turnpoints, taskInfo); 
   }
 
   var onNewTask = function(e) {
@@ -136,6 +142,10 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
     taskExporter.exporter(turnpoints, taskInfo, e.detail.format);
   } 
 
+  var setBbox = function(bbox) {
+    taskInfo.bbox = bbox;
+  }
+
   //document.addEventListener('filenameRemoved', onTaskDelete);
   document.addEventListener('addTurnpoint', onAddTurnpoint);
   document.addEventListener('editTurnpoint', onEditTurnpoint);
@@ -148,6 +158,7 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
   document.addEventListener('exportTask', onTaskExport);
   document.addEventListener('finalExportTask', onFinalExportTask);
   document.addEventListener('newTask', onNewTask);
+  document.addEventListener('saveTask', onTaskSave);
 
   return {
     'addTurnpoint' : addTurnpoint,
@@ -156,5 +167,6 @@ function(taskBoard, Turnpoint, fullBoard, param, optimizer, taskAdvisor, taskExp
     'getTurnpoints' : getTurnpoints,
     'delete' : onTaskDelete,
     'drawCourse' : drawCourse,
+    'setBbox' : setBbox,
   }
 });
